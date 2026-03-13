@@ -2256,52 +2256,80 @@
   }
 
   /* ---------- Contact Form ---------- */
-  function handleFormSubmit(e) {
+  /* ── Web3Forms access key ───────────────────────────────────────────
+     1. Register at https://web3forms.com with info@machen97.com
+     2. Copy the Access Key from the confirmation email
+     3. Replace the string below with your key                         */
+  const WEB3FORMS_KEY = 'DEIN-ACCESS-KEY-HIER';
+
+  async function handleFormSubmit(e) {
     e.preventDefault();
     const form = e.target;
     const btn = form.querySelector('[type="submit"]');
     const data = new FormData(form);
 
-    const subject = encodeURIComponent('Anfrage: ' + (data.get('interest') || 'Allgemein'));
-    const body = encodeURIComponent(
-      `Name: ${data.get('fname')} ${data.get('lname')}\n` +
-      `E-Mail: ${data.get('email')}\n` +
-      `Unternehmen: ${data.get('company') || '–'}\n` +
-      `Interesse: ${data.get('interest') || '–'}\n\n` +
-      `Nachricht:\n${data.get('message') || '–'}`
-    );
-
-    /* Button feedback */
     const originalHTML = btn.innerHTML;
-    btn.innerHTML = '✓ Nachricht vorbereitet…';
+    btn.innerHTML = 'Wird gesendet…';
     btn.disabled = true;
 
-    /* Hidden anchor click — does NOT navigate away from the page,
-       works on macOS Chrome / Safari without opening a blank tab  */
-    const link = document.createElement('a');
-    link.href = `mailto:info@machen97.com?subject=${subject}&body=${body}`;
-    link.style.position = 'absolute';
-    link.style.left = '-9999px';
-    document.body.appendChild(link);
-    link.click();
-    setTimeout(() => document.body.removeChild(link), 200);
+    const interestLabels = {
+      b2b: 'Großhandel / B2B-Partnerschaft',
+      einzelhandel: 'Einzelhandel / Lieferantenvertrag',
+      muster: 'Musterbestellung',
+      privat: 'Private Bestellung',
+      sonstiges: 'Sonstiges'
+    };
+    const interestKey = data.get('interest') || '';
+    const interestLabel = interestLabels[interestKey] || interestKey || 'Nicht angegeben';
 
-    setTimeout(() => {
-      form.reset();
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: 'Neue Anfrage: ' + interestLabel + ' – machen97.com',
+      from_name: 'Pinienkaffee Kontaktformular',
+      name: (data.get('fname') + ' ' + data.get('lname')).trim(),
+      email: data.get('email'),
+      message:
+        'Name: '        + data.get('fname') + ' ' + data.get('lname') + '\n' +
+        'E-Mail: '      + data.get('email') + '\n' +
+        'Unternehmen: ' + (data.get('company') || '–') + '\n' +
+        'Interesse: '   + interestLabel + '\n\n' +
+        'Nachricht:\n'  + (data.get('message') || '–'),
+      botcheck: ''
+    };
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        form.reset();
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+        showToastContact(true);
+      } else {
+        throw new Error(json.message || 'Fehler');
+      }
+    } catch (err) {
+      console.error('Form error:', err);
       btn.innerHTML = originalHTML;
       btn.disabled = false;
-      showToastContact();
-    }, 600);
+      showToastContact(false);
+    }
   }
 
-  function showToastContact() {
+  function showToastContact(success) {
     const toast = document.getElementById('toast');
-    toast.innerHTML = '✓ E-Mail-Entwurf geöffnet · Alternativ: info@machen97.com';
+    if (success) {
+      toast.innerHTML = '✓ Nachricht gesendet – wir melden uns bald!';
+    } else {
+      toast.innerHTML = '⚠ Fehler beim Senden · Bitte schreiben Sie an info@machen97.com';
+    }
     toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-      setTimeout(() => { toast.innerHTML = '✓ Nachricht gesendet – wir melden uns bald!'; }, 400);
-    }, 5000);
+    setTimeout(() => { toast.classList.remove('show'); }, 5000);
   }
 
   function showToast() {

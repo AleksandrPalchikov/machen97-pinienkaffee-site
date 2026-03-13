@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Impressum – Pinienkaffee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #3D6B4F; --gold: #C4A35A; --cream: #F7F4EF;
+      --black: #181818; --gray: #6B6B6B;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--sans); background: var(--cream); color: var(--black); }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream); border-bottom: 1px solid rgba(0,0,0,0.08);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 72px;
+    }
+    .nav-logo { text-decoration: none; }
+    .nav-logo-name { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--black); letter-spacing: 0.01em; }
+    .nav-logo-name sup { font-size: 12px; }
+    .nav-logo-sub { font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray); margin-top: 2px; }
+    .nav-back { font-size: 13px; font-weight: 500; color: var(--green); text-decoration: none; letter-spacing: 0.04em; }
+    .nav-back:hover { text-decoration: underline; }
+
+    /* CONTENT */
+    .legal-wrap { max-width: 780px; margin: 0 auto; padding: 80px 40px 120px; }
+    h1 { font-family: var(--serif); font-size: 48px; font-weight: 500; margin-bottom: 48px; }
+    h2 { font-family: var(--serif); font-size: 22px; font-weight: 600; margin: 40px 0 12px; }
+    p { font-size: 15px; line-height: 1.8; color: #333; margin-bottom: 12px; }
+    a { color: var(--green); }
+
+    /* FOOTER */
+    footer { background: #181818; color: rgba(255,255,255,0.45); padding: 32px 40px; text-align: center; font-size: 12px; }
+    footer a { color: rgba(255,255,255,0.45); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-name">Pinienkaffee<sup>®</sup></div>
+    <div class="nav-logo-sub">by M97 Factory · Machen97 UG</div>
+  </a>
+  <a href="/" class="nav-back">← Zurück zur Website</a>
+</nav>
+
+<main class="legal-wrap">
+  <h1>Impressum</h1>
+
+  <h2>Angaben gemäß § 5 TMG</h2>
+  <p>
+    Machen97 UG (haftungsbeschränkt)<br/>
+    Zum Scheider Feld 12<br/>
+    51467 Bergisch Gladbach<br/>
+    Deutschland
+  </p>
+
+  <h2>Vertreten durch</h2>
+  <p>Geschäftsführer: Aleksandr Palchikov</p>
+
+  <h2>Kontakt</h2>
+  <p>
+    Telefon: +49 176 879 22 985<br/>
+    E-Mail: <a href="mailto:info@machen97.com">info@machen97.com</a>
+  </p>
+
+  <h2>Handelsregister</h2>
+  <p>
+    Registergericht: Amtsgericht Köln<br/>
+    Registernummer: HRB 114193
+  </p>
+
+  <h2>Umsatzsteuer-ID</h2>
+  <p>
+    Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br/>
+    DE364168046
+  </p>
+
+  <h2>EU-Streitschlichtung</h2>
+  <p>
+    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+    <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.<br/>
+    Unsere E-Mail-Adresse finden Sie oben im Impressum.
+  </p>
+
+  <h2>Verbraucherstreitbeilegung</h2>
+  <p>
+    Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+    Verbraucherschlichtungsstelle teilzunehmen.
+  </p>
+</main>
+
+<footer>
+  <p>© 2025 Machen97 UG (haftungsbeschränkt) · Bergisch Gladbach
+    <a href="/impressum.html">Impressum</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/agb.html">AGB</a>
+  </p>
+</footer>
+
+</body>
+</html>

@@ -916,6 +916,58 @@
       line-height: 1.3;
     }
 
+    /* Founders */
+    .founders-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 36px;
+      margin-bottom: 36px;
+    }
+    .founder-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 22px;
+      background: var(--cream);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .founder-card:hover { background: #ede9e1; }
+    .founder-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      font-family: var(--serif);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .founder-info { display: flex; flex-direction: column; gap: 2px; }
+    .founder-name {
+      font-family: var(--serif);
+      font-size: 17px;
+      color: var(--black);
+      line-height: 1.2;
+    }
+    .founder-role {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+    }
+    .founder-link-hint {
+      font-size: 11px;
+      color: var(--green);
+      margin-top: 2px;
+    }
+
     /* EUIPO trademark badge */
     .trademark-badge {
       display: flex;
@@ -1897,9 +1949,27 @@
           spezialisiert auf den Import und Vertrieb von pflanzlichen Spezialitätengetränken und Naturprodukten.
         </p>
         <p>
-          Unter der Führung von Aleksandr Palchikov entwickeln wir neue Produktkategorien für den deutschen
-          Lebensmittelmarkt – mit Fokus auf Qualität, Transparenz und authentischen Rohstoffen.
+          Gegründet von Aleksandr Palchikov und Waldemar Eichmann entwickeln wir neue Produktkategorien
+          für den deutschen Lebensmittelmarkt – mit Fokus auf Qualität, Transparenz und authentischen Rohstoffen.
         </p>
+
+        <div class="founders-row">
+          <div class="founder-card">
+            <div class="founder-avatar">AP</div>
+            <div class="founder-info">
+              <span class="founder-name">Aleksandr Palchikov</span>
+              <span class="founder-role">Geschäftsführer &amp; Gründer</span>
+            </div>
+          </div>
+          <a href="https://vovanglobal.de" target="_blank" rel="noopener" class="founder-card">
+            <div class="founder-avatar">WE</div>
+            <div class="founder-info">
+              <span class="founder-name">Waldemar Eichmann</span>
+              <span class="founder-role">Mitgründer &amp; Investor</span>
+              <span class="founder-link-hint">vovanglobal.de ↗</span>
+            </div>
+          </a>
+        </div>
 
         <div class="company-facts">
           <div class="fact-item">

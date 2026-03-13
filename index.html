@@ -193,6 +193,51 @@
       background: var(--black);
       transition: var(--transition);
     }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* =====================
+       MOBILE NAV OVERLAY
+    ===================== */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-nav.open {
+      display: flex;
+      opacity: 1;
+    }
+    .mobile-nav a {
+      font-family: var(--serif);
+      font-size: 32px;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--green); }
+    .mobile-nav .btn-dark {
+      font-family: var(--sans);
+      font-size: 15px;
+      margin-top: 16px;
+    }
+    .mobile-nav-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: none; border: none;
+      font-size: 28px; cursor: pointer;
+      color: var(--black);
+    }
 
     /* =====================
        HERO
@@ -1308,6 +1353,16 @@
   </button>
 </nav>
 
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Schließen">✕</button>
+  <a href="#produkt" class="mobile-nav-link">Produkt</a>
+  <a href="#shop" class="mobile-nav-link">Shop</a>
+  <a href="#b2b" class="mobile-nav-link">Für Händler</a>
+  <a href="#ueber-uns" class="mobile-nav-link">Über uns</a>
+  <a href="#kontakt" class="mobile-nav-link">Kontakt</a>
+  <a href="#kontakt" class="btn btn-dark mobile-nav-link">Anfrage stellen</a>
+</div>
 
 <!-- ============================
      HERO
@@ -2090,6 +2145,28 @@
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 4000);
   }
+
+  /* ---------- Mobile nav ---------- */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileNavClose = document.getElementById('mobile-nav-close');
+
+  function openMobileNav() {
+    mobileNav.classList.add('open');
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', openMobileNav);
+  mobileNavClose.addEventListener('click', closeMobileNav);
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
 
   /* ---------- Smooth anchor scroll for mobile ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(a => {

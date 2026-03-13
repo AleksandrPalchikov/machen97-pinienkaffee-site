@@ -1186,6 +1186,48 @@
     }
     .toast.show { transform: translateY(0); opacity: 1; }
 
+    .toast-pdf {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #181818;
+      border: 1px solid rgba(197,162,86,0.5);
+      color: rgba(255,255,255,0.85);
+      padding: 13px 28px;
+      border-radius: 4px;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 9999;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .toast-pdf .toast-pdf-bar {
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 2px;
+      width: 100%;
+      background: var(--gold);
+      border-radius: 0 0 4px 4px;
+      transform-origin: left;
+      animation: none;
+    }
+    .toast-pdf.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .toast-pdf.show .toast-pdf-bar {
+      animation: pdf-progress 3s linear forwards;
+    }
+    @keyframes pdf-progress {
+      from { transform: scaleX(1); }
+      to   { transform: scaleX(0); }
+    }
+
     /* =====================
        RESPONSIVE
     ===================== */
@@ -2090,6 +2132,12 @@
 <!-- Toast Notification -->
 <div class="toast" id="toast">✓ Nachricht gesendet – wir melden uns bald!</div>
 
+<!-- PDF Download Toast -->
+<div class="toast-pdf" id="toast-pdf">
+  Download gestartet
+  <span class="toast-pdf-bar"></span>
+</div>
+
 
 <!-- ============================
      JAVASCRIPT
@@ -2145,6 +2193,17 @@
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 4000);
   }
+
+  /* ---------- PDF Download Toast ---------- */
+  document.querySelectorAll('.btn-pdf-download').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const t = document.getElementById('toast-pdf');
+      t.classList.remove('show');
+      void t.offsetWidth; /* restart animation */
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3200);
+    });
+  });
 
   /* ---------- Mobile nav ---------- */
   const hamburger = document.getElementById('hamburger');

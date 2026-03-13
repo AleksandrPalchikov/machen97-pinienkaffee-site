@@ -6,6 +6,13 @@
   <title>Pinienkaffee – M97 Factory | Pflanzlicher Kaffeeersatz aus Pinienkernen</title>
   <meta name="description" content="Pinienkaffee – ein einzigartiges, koffeinfreies Getränk aus Pinienkernen. Ohne Zuckerzusatz, vegetarisch, pflanzlich. Für Einzelhandel und B2B-Partner." />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+  <meta name="theme-color" content="#3D6B4F" />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -2262,20 +2269,37 @@
       `Nachricht:\n${data.get('message') || '–'}`
     );
 
-    /* Visual feedback */
+    /* Button feedback */
     const originalHTML = btn.innerHTML;
-    btn.innerHTML = '→ E-Mail-Client wird geöffnet…';
+    btn.innerHTML = '✓ Nachricht vorbereitet…';
     btn.disabled = true;
-    btn.style.opacity = '0.7';
+
+    /* Hidden anchor click — does NOT navigate away from the page,
+       works on macOS Chrome / Safari without opening a blank tab  */
+    const link = document.createElement('a');
+    link.href = `mailto:info@machen97.com?subject=${subject}&body=${body}`;
+    link.style.position = 'absolute';
+    link.style.left = '-9999px';
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(() => document.body.removeChild(link), 200);
 
     setTimeout(() => {
-      window.location.href = `mailto:info@machen97.com?subject=${subject}&body=${body}`;
       form.reset();
       btn.innerHTML = originalHTML;
       btn.disabled = false;
-      btn.style.opacity = '';
-      showToast();
-    }, 400);
+      showToastContact();
+    }, 600);
+  }
+
+  function showToastContact() {
+    const toast = document.getElementById('toast');
+    toast.innerHTML = '✓ E-Mail-Entwurf geöffnet · Alternativ: info@machen97.com';
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => { toast.innerHTML = '✓ Nachricht gesendet – wir melden uns bald!'; }, 400);
+    }, 5000);
   }
 
   function showToast() {

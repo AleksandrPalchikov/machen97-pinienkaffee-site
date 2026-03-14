@@ -1333,6 +1333,26 @@
       color: var(--gray);
     }
 
+    .ueber-prod-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .ueber-prod-strip img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      filter: saturate(0.88);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+    .ueber-prod-strip img:hover {
+      filter: saturate(1.05);
+      transform: scale(1.02);
+    }
+
     /* =====================
        KONTAKT
     ===================== */
@@ -2405,6 +2425,12 @@
           Vor dem Markteintritt haben wir zwei Jahre lang die Produktionstechnologie verfeinert —
           um den richtigen Geschmack, die perfekte Konsistenz und gleichbleibende Qualität zu erreichen.
         </div>
+      </div>
+
+      <div class="ueber-prod-strip">
+        <img src="images/prod_01.jpg" alt="Pinienkerne auf Sortiertablett – M97 Factory Produktion" />
+        <img src="images/prod_02.jpg" alt="Qualitätssortierung der Pinienkerne – M97 Factory" />
+        <img src="images/prod_03.jpg" alt="Präzisionstechnik in der Produktion – ZORN Anlage" />
       </div>
 
       <div class="ueber-right">

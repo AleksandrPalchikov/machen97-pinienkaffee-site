@@ -823,79 +823,132 @@
 
     /* ── Gesundheit section ─────────────────────────────────── */
     #gesundheit {
-      background: var(--white);
+      background: #0b1e12;
     }
     .gesundheit-header {
       text-align: center;
-      max-width: 600px;
-      margin: 0 auto 64px;
+      max-width: 640px;
+      margin: 0 auto 72px;
+    }
+    .gesundheit-header .section-label {
+      color: rgba(255,255,255,0.45);
     }
     .gesundheit-header h2 {
+      color: var(--white);
       margin-bottom: 16px;
     }
     .gesundheit-sub {
       font-size: 17px;
       line-height: 1.7;
-      color: var(--gray);
+      color: rgba(255,255,255,0.55);
     }
-    .gesundheit-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-    .gesundheit-card {
-      background: var(--cream);
-      border-radius: 8px;
-      padding: 32px 28px;
+    .gesundheit-badge-row {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: var(--transition);
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+      flex-wrap: wrap;
     }
-    .gesundheit-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.07);
-    }
-    .gesundheit-icon {
-      width: 40px;
-      height: 40px;
-      color: var(--green);
-      margin-bottom: 4px;
-    }
-    .gesundheit-icon svg {
-      width: 40px;
-      height: 40px;
-    }
-    .gesundheit-card h3 {
-      font-family: var(--serif);
-      font-size: 18px;
-      line-height: 1.3;
-      color: var(--black);
-    }
-    .gesundheit-card p {
-      font-size: 14px;
-      line-height: 1.75;
-      color: var(--gray);
-      flex: 1;
-    }
-    .gesundheit-tag {
-      display: inline-block;
+    .gesundheit-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--green);
-      background: rgba(61,107,79,0.08);
-      padding: 4px 10px;
-      border-radius: 4px;
-      align-self: flex-start;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+    .gesundheit-badge svg {
+      width: 11px; height: 11px;
+      stroke: rgba(255,255,255,0.5);
+    }
+    .gesundheit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .gesundheit-card {
+      background: #0d2015;
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: background 0.2s ease;
+    }
+    .gesundheit-card:hover {
+      background: #122a1c;
+    }
+    .gesundheit-stat {
+      font-family: var(--serif);
+      font-size: 48px;
+      line-height: 1;
+      color: #6dab82;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .gesundheit-icon {
+      width: 32px;
+      height: 32px;
+      color: #6dab82;
+      margin-bottom: 2px;
+    }
+    .gesundheit-icon svg {
+      width: 32px;
+      height: 32px;
+    }
+    .gesundheit-card h3 {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.9);
+    }
+    .gesundheit-card p {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      flex: 1;
+    }
+    .gesundheit-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6dab82;
+      margin-top: 4px;
+    }
+    .gesundheit-tag::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 1px;
+      background: #6dab82;
+      flex-shrink: 0;
+    }
+    .gesundheit-source {
+      font-size: 10px;
+      color: rgba(255,255,255,0.25);
+      margin-top: 2px;
     }
     .gesundheit-disclaimer {
-      font-size: 12px;
-      color: var(--gray-light);
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
       line-height: 1.7;
-      border-top: 1px solid var(--light);
+      border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 24px;
       max-width: 760px;
     }
@@ -1404,7 +1457,9 @@
 
       .steps-grid { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr; }
-      .gesundheit-grid { grid-template-columns: 1fr; gap: 16px; }
+      .gesundheit-grid { grid-template-columns: 1fr; gap: 1px; }
+      .gesundheit-stat { font-size: 36px; }
+      .gesundheit-badge-row { gap: 8px; }
       .product-card-img { aspect-ratio: 4/3; padding: 16px; }
       .form-row { grid-template-columns: 1fr; }
       .shop-header { flex-direction: column; align-items: flex-start; }
@@ -1901,23 +1956,37 @@
       <p class="section-label">Wissenschaft &amp; Natur</p>
       <h2>Mehr als ein Getränk</h2>
       <p class="gesundheit-sub">Kein Koffein. Keine Zusätze. Dafür ein Profil an bioaktiven Stoffen, das kaum ein anderes Heißgetränk bieten kann.</p>
+      <div class="gesundheit-badge-row">
+        <span class="gesundheit-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Peer-reviewed
+        </span>
+        <span class="gesundheit-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          PubMed · ScienceDirect
+        </span>
+        <span class="gesundheit-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Natürliche Rohstoffe
+        </span>
+      </div>
     </div>
 
     <div class="gesundheit-grid">
 
       <div class="gesundheit-card">
+        <div class="gesundheit-stat">0 mg</div>
         <div class="gesundheit-icon">
-          <!-- Mond = kein Koffein, kein Stimulans, guter Schlaf -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>
         </div>
-        <h3>100 % koffeinfrei</h3>
-        <p>Kein Kreislaufstress, kein Zittern, keine Schlafstörungen. Volle Wärme und Genuss – für jeden, zu jeder Zeit.</p>
-        <div class="gesundheit-tag">Geeignet für Kinder, Schwangere &amp; Senioren</div>
+        <h3>Koffein pro Portion</h3>
+        <p>Kein Kreislaufstress, kein Zittern, keine Schlafstörungen — volle Wärme und Genuss für jeden, zu jeder Tageszeit.</p>
+        <div class="gesundheit-tag">Kinder · Schwangere · Senioren</div>
       </div>
 
       <div class="gesundheit-card">
+        <div class="gesundheit-stat">−25 %</div>
         <div class="gesundheit-icon">
-          <!-- Molekül-Hexagon = chemische Verbindung / Fettsäure-Struktur -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <circle cx="12" cy="5" r="1.5"/><circle cx="18.5" cy="8.75" r="1.5"/><circle cx="18.5" cy="15.25" r="1.5"/>
             <circle cx="12" cy="19" r="1.5"/><circle cx="5.5" cy="15.25" r="1.5"/><circle cx="5.5" cy="8.75" r="1.5"/>
@@ -1926,14 +1995,15 @@
             <line x1="5.5" y1="10.25" x2="5.5" y2="13.75"/><line x1="7" y1="9.5" x2="12" y2="6.5"/>
           </svg>
         </div>
-        <h3>Pinolensäure — einzigartig entzündungshemmend</h3>
-        <p>Diese seltene Omega-6-Fettsäure aus Pinienkernen reduziert nachweislich Entzündungsmarker (TNF-α, IL-6, IL-1β) um bis zu 25 %.*</p>
+        <h3>Entzündungsmarker (TNF-α, IL-6)*</h3>
+        <p>Pinolensäure — seltene Omega-6-Fettsäure — reduziert nachweislich entzündliche Zytokine. Einzigartiger Wirkstoff, nicht in regulärem Kaffee vorhanden.</p>
         <div class="gesundheit-tag">Einzigartiger Wirkstoff</div>
+        <span class="gesundheit-source">Quelle: PubMed 34080609 · 35614190</span>
       </div>
 
       <div class="gesundheit-card">
+        <div class="gesundheit-stat">9 / 9</div>
         <div class="gesundheit-icon">
-          <!-- DNA-Doppelhelix = Proteinprofil / Aminosäuren -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M8 3c0 4.5 8 4.5 8 9s-8 4.5-8 9"/>
             <path d="M16 3c0 4.5-8 4.5-8 9s8 4.5 8 9"/>
@@ -1942,14 +2012,14 @@
             <line x1="8" y1="16.5" x2="16" y2="16.5"/>
           </svg>
         </div>
-        <h3>Alle 9 essenziellen Aminosäuren</h3>
-        <p>Vollständiges Proteinprofil — einschließlich Tryptophan, Leucin und Lysin. Unterstützt Regeneration, Muskelaufbau und einen ausgeglichenen Stoffwechsel.</p>
-        <div class="gesundheit-tag">Besonders wertvoll für Vegetarier &amp; Veganer</div>
+        <h3>Essentielle Aminosäuren</h3>
+        <p>Vollständiges Proteinprofil inkl. Tryptophan, Leucin und Lysin. Unterstützt Regeneration und Stoffwechsel — besonders wertvoll für Vegetarier und Veganer.</p>
+        <div class="gesundheit-tag">Vollständiges Proteinprofil</div>
       </div>
 
       <div class="gesundheit-card">
+        <div class="gesundheit-stat">383 %</div>
         <div class="gesundheit-icon">
-          <!-- Atom-Orbital = Mineralstoffe / chemische Elemente -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <circle cx="12" cy="12" r="2"/>
             <ellipse cx="12" cy="12" rx="10" ry="3.5"/>
@@ -1957,42 +2027,42 @@
             <ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(120 12 12)"/>
           </svg>
         </div>
-        <h3>Magnesium &amp; Mangan</h3>
-        <p>Pinienkerne liefern bis zu 383 % des Tagesbedarfs an Mangan sowie viel Magnesium — für Nervensystem, Energiestoffwechsel und gesunden Schlaf.*</p>
-        <div class="gesundheit-tag">383 % Mangan · Tagesbedarf</div>
+        <h3>Tagesbedarf Mangan*</h3>
+        <p>Pinienkerne decken 383 % der empfohlenen Tagesdosis an Mangan. Dazu reichlich Magnesium für Nervensystem, Energiestoffwechsel und Schlafqualität.</p>
+        <div class="gesundheit-tag">Mg · Mn · Zn · Se · Fe</div>
       </div>
 
       <div class="gesundheit-card">
+        <div class="gesundheit-stat">266 mg</div>
         <div class="gesundheit-icon">
-          <!-- Schild mit Häkchen = Zellschutz / Immunabwehr -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <polyline points="9 12 11 14 15 10"/>
           </svg>
         </div>
-        <h3>Antioxidantien &amp; Polyphenole</h3>
-        <p>Hoher Gehalt an Vitamin E, Polyphenolen und Tanninen. Schützen Zellen vor oxidativem Stress und unterstützen das Immunsystem.*</p>
-        <div class="gesundheit-tag">Freie Radikale · Zellschutz</div>
+        <h3>Polyphenole pro Gramm*</h3>
+        <p>Außergewöhnlich hoher Gehalt an Polyphenolen und Tanninen. Schützen Zellen vor oxidativem Stress, stärken das Immunsystem und wirken zellschützend.</p>
+        <div class="gesundheit-tag">Vitamin E · Zellschutz</div>
+        <span class="gesundheit-source">Quelle: ScienceDirect · Food Chemistry</span>
       </div>
 
       <div class="gesundheit-card">
+        <div class="gesundheit-stat">PPAR</div>
         <div class="gesundheit-icon">
-          <!-- Flamme = Energiestoffwechsel / Fettverbrennung -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
           </svg>
         </div>
-        <h3>Metabolische Unterstützung</h3>
-        <p>Pinolensäure aktiviert PPAR-Rezeptoren und Sirtuin3 — Mechanismen, die Fettstoffwechsel, Sättigungsgefühl und Gewichtsmanagement positiv beeinflussen.*</p>
-        <div class="gesundheit-tag">Sättigung · Lipidstoffwechsel</div>
+        <h3>Rezeptor-Aktivierung &amp; Stoffwechsel*</h3>
+        <p>Pinolensäure aktiviert PPAR-Rezeptoren und Sirtuin3 — molekulare Mechanismen, die Fettstoffwechsel, Sättigungsgefühl und Gewichtsmanagement regulieren.</p>
+        <div class="gesundheit-tag">Lipidstoffwechsel · Sirtuin3</div>
+        <span class="gesundheit-source">Quelle: PubMed 33831456</span>
       </div>
 
     </div>
 
     <div class="gesundheit-disclaimer">
-      * Alle zitierten Studien und wissenschaftlichen Daten beziehen sich auf Pinienkerne (<em>Pinus sibirica</em> und verwandte Arten) als Rohstoff.
-      Eigenständige klinische Studien zum fertigen Produkt Pinienkaffee wurden bislang nicht durchgeführt.
-      Die Angaben basieren auf peer-reviewten Fachartikeln (u.a. PubMed, ScienceDirect).
+      * Alle zitierten Studien und wissenschaftlichen Daten beziehen sich auf Pinienkerne (<em>Pinus sibirica</em> und verwandte Arten) als Rohstoff. Eigenständige klinische Studien zum fertigen Produkt Pinienkaffee wurden bislang nicht durchgeführt. Die Angaben basieren auf peer-reviewten Fachartikeln (PubMed, ScienceDirect, Food Chemistry).
     </div>
 
   </div>

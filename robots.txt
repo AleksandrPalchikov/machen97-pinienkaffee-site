@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://machen97.com/sitemap.xml

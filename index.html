@@ -6,6 +6,27 @@
   <title>Pinienkaffee – M97 Factory | Pflanzlicher Kaffeeersatz aus Pinienkernen</title>
   <meta name="description" content="Pinienkaffee – ein einzigartiges, koffeinfreies Getränk aus Pinienkernen. Ohne Zuckerzusatz, vegetarisch, pflanzlich. Für Einzelhandel und B2B-Partner." />
 
+  <!-- Open Graph / Messenger & Social previews -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://machen97.com/" />
+  <meta property="og:title"       content="Pinienkaffee – Das erste koffeinfreie Getränk aus Pinienkernen" />
+  <meta property="og:description" content="Koffeinfrei, pflanzlich, reich an Antioxidantien. EU-zertifiziert und sofort listungsfähig – Pinienkaffee von M97 Factory." />
+  <meta property="og:image"       content="https://machen97.com/images/og-preview.jpg" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"   content="Pinienkaffee – M97 Factory" />
+  <meta property="og:locale"      content="de_DE" />
+  <meta property="og:site_name"   content="M97 Factory – Pinienkaffee" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Pinienkaffee – Das erste koffeinfreie Getränk aus Pinienkernen" />
+  <meta name="twitter:description" content="Koffeinfrei, pflanzlich, reich an Antioxidantien. EU-zertifiziert und sofort listungsfähig." />
+  <meta name="twitter:image"       content="https://machen97.com/images/og-preview.jpg" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://machen97.com/" />
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -1648,6 +1669,97 @@
       flex-shrink: 0;
     }
   </style>
+
+  <!-- Schema.org Structured Data — enables Google sitelinks & rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://machen97.com/#website",
+        "url": "https://machen97.com/",
+        "name": "Pinienkaffee – M97 Factory",
+        "description": "Das erste koffeinfreie Getränk aus Pinienkernen. Koffeinfrei, pflanzlich, reich an Antioxidantien.",
+        "inLanguage": "de-DE",
+        "publisher": { "@id": "https://machen97.com/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://machen97.com/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://machen97.com/#organization",
+        "name": "M97 Factory",
+        "url": "https://machen97.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://machen97.com/favicon-192x192.png",
+          "width": 192,
+          "height": 192
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "info@machen97.com",
+          "contactType": "sales",
+          "availableLanguage": ["German", "English", "Russian"]
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/aleksandr-palchikov/",
+          "https://vovanglobal.de"
+        ]
+      },
+      {
+        "@type": "Product",
+        "@id": "https://machen97.com/#product",
+        "name": "Pinienkaffee",
+        "description": "Koffeinfreies Getränk aus gerösteten Pinienkernen. Ohne Zuckerzusatz, vegetarisch, pflanzlich, reich an Antioxidantien und Polyphenolen.",
+        "brand": {
+          "@type": "Brand",
+          "name": "M97 Factory"
+        },
+        "url": "https://machen97.com/",
+        "image": "https://machen97.com/images/og-preview.jpg",
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "EUR",
+          "seller": { "@id": "https://machen97.com/#organization" }
+        },
+        "additionalProperty": [
+          { "@type": "PropertyValue", "name": "Koffeinfrei", "value": "Ja" },
+          { "@type": "PropertyValue", "name": "Pflanzlich", "value": "Ja" },
+          { "@type": "PropertyValue", "name": "Zertifizierung", "value": "EU-zertifiziert" }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://machen97.com/#webpage",
+        "url": "https://machen97.com/",
+        "name": "Pinienkaffee – M97 Factory | Pflanzlicher Kaffeeersatz aus Pinienkernen",
+        "isPartOf": { "@id": "https://machen97.com/#website" },
+        "about": { "@id": "https://machen97.com/#product" },
+        "description": "Pinienkaffee – ein einzigartiges, koffeinfreies Getränk aus Pinienkernen. Ohne Zuckerzusatz, vegetarisch, pflanzlich. Für Einzelhandel und B2B-Partner.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Start",        "item": "https://machen97.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Produkte",     "item": "https://machen97.com/#produkt" },
+            { "@type": "ListItem", "position": 3, "name": "Gesundheit",   "item": "https://machen97.com/#gesundheit" },
+            { "@type": "ListItem", "position": 4, "name": "Für Partner",  "item": "https://machen97.com/#b2b" },
+            { "@type": "ListItem", "position": 5, "name": "Über uns",     "item": "https://machen97.com/#ueber-uns" },
+            { "@type": "ListItem", "position": 6, "name": "Kontakt",      "item": "https://machen97.com/#kontakt" }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -1769,13 +1881,8 @@
         <h2>Kaffeegenuss ohne Koffein und Zucker</h2>
         <div class="divider"></div>
         <p>
-          Pinienkaffee ist ein einzigartiges Getränk mit dem feinen Aroma von Pinienkernen
-          und einer cremigen Sanftheit. Entwickelt als gesunde Alternative zu herkömmlichem Kaffee –
-          ohne Koffein, ohne Zuckerzusatz, vollständig pflanzlich.
-        </p>
-        <p>
-          Das Produkt stammt aus natürlichen, sorgfältig ausgewählten Zutaten und wird
-          von Machen97 UG in Deutschland importiert und vertrieben.
+          Entwickelt als gesunde Alternative zu herkömmlichem Kaffee – aus natürlichen,
+          sorgfältig ausgewählten Zutaten, importiert und vertrieben von Machen97 UG in Deutschland.
         </p>
 
         <ul class="features-list">
@@ -1796,12 +1903,6 @@
               <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
             </span>
             <span><strong>Pflanzlich &amp; vegetarisch</strong> – natürliche Inhaltsstoffe</span>
-          </li>
-          <li>
-            <span class="icon">
-              <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
-            </span>
-            <span><strong>Erstes Produkt seiner Art</strong> auf dem deutschen Markt</span>
           </li>
           <li>
             <span class="icon">
@@ -1894,7 +1995,7 @@
           <span class="product-variant-tag">Vegetarisch</span>
           <h3>Pinienkaffee Classic</h3>
           <p class="product-sub">250 g · Koffeinfrei</p>
-          <p>Das Original – cremig, mild und natürlich. Mit dem feinen Aroma handverlesener Pinienkerne. Ohne Zuckerzusatz, vollständig pflanzlich.</p>
+          <p>Das Original – cremig, mild und natürlich. Mit dem feinen Aroma handverlesener Pinienkerne.</p>
           <div class="product-attrs">
             <span class="attr-chip">Koffeinfrei</span>
             <span class="attr-chip">Ohne Zucker</span>
@@ -1966,7 +2067,7 @@
       <span class="tag">Nährwertangaben</span>
       <h2>Transparente Inhaltsstoffe</h2>
       <div class="divider" style="margin: 18px auto;"></div>
-      <p>Alle Nährwerte pro 100 g. Beide Sorten enthalten 0 g Zucker und sind koffeinfrei.</p>
+      <p>Alle Nährwerte pro 100 g.</p>
     </div>
 
     <div class="nahrwerte-tabs">

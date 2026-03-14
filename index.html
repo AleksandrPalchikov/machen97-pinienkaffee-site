@@ -725,35 +725,42 @@
     #b2b p { color: rgba(255,255,255,0.55); }
     #b2b .divider { background: var(--gold); }
 
-    /* B2B cinematic banner */
-    .b2b-banner {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      object-position: center 60%;
-      display: block;
-      opacity: 0.75;
-      border-radius: 8px;
-      margin-bottom: 64px;
-    }
-
-    /* B2B KPI strip */
-    .b2b-kpi-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
+    /* B2B hero: banner + KPI overlay */
+    .b2b-hero {
+      position: relative;
+      border-radius: 10px;
       overflow: hidden;
       margin-bottom: 72px;
     }
+    .b2b-hero-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      object-position: center 55%;
+      display: block;
+    }
+    .b2b-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(8,20,12,0.55) 0%, rgba(8,20,12,0.82) 100%);
+    }
+    .b2b-kpi-strip {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
     .b2b-kpi {
-      padding: 32px 36px;
-      border-right: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 44px;
+      border-right: 1px solid rgba(255,255,255,0.12);
     }
     .b2b-kpi:last-child { border-right: none; }
     .b2b-kpi-num {
       font-family: var(--serif);
-      font-size: 44px;
+      font-size: 52px;
       color: var(--gold);
       line-height: 1;
       letter-spacing: -0.02em;
@@ -761,101 +768,106 @@
     }
     .b2b-kpi-label {
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255,255,255,0.95);
       margin-bottom: 4px;
     }
     .b2b-kpi-sub {
       font-size: 12px;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.45);
       line-height: 1.5;
     }
 
+    /* B2B main grid */
     .b2b-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 64px;
       align-items: start;
     }
 
-    .b2b-left h2 { margin-bottom: 24px; }
-    .b2b-left p  { margin-bottom: 20px; font-size: 16px; }
+    .b2b-left h2 { margin-bottom: 20px; }
+    .b2b-left > p { margin-bottom: 0; font-size: 16px; }
 
     .retailers-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin: 36px 0;
+      gap: 8px;
+      margin: 28px 0;
     }
     .retailer-chip {
-      padding: 8px 18px;
+      padding: 6px 16px;
       border: 1px solid rgba(255,255,255,0.15);
       border-radius: 100px;
-      font-size: 13px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
       letter-spacing: 0.04em;
       transition: var(--transition);
       text-decoration: none;
-      cursor: pointer;
     }
-    .retailer-chip:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
+    .retailer-chip:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* Right column: lifestyle photo + benefits */
+    /* Right column: catalog download card */
     .b2b-right { padding-top: 0; }
 
-    .b2b-lifestyle {
-      width: 100%;
-      aspect-ratio: 1/1;
+    .b2b-catalog-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .b2b-catalog-card img {
+      width: 100%; height: 100%;
       object-fit: cover;
       object-position: center 30%;
-      border-radius: 8px;
       display: block;
-      margin-bottom: 24px;
+      transition: transform 0.6s ease;
     }
-
-    .b2b-benefits {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      overflow: hidden;
+    .b2b-catalog-card:hover img { transform: scale(1.04); }
+    .b2b-catalog-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5,14,8,0.93) 0%, rgba(5,14,8,0.45) 55%, rgba(5,14,8,0.1) 100%);
     }
-
-    .benefit-item {
-      padding: 24px 28px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      transition: var(--transition);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      column-gap: 20px;
-      align-items: start;
+    .b2b-catalog-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px;
     }
-    .benefit-item:last-child { border-bottom: none; }
-    .benefit-item:hover { background: rgba(255,255,255,0.03); }
-
-    .benefit-item .benefit-num {
-      font-family: var(--serif);
-      font-size: 12px;
-      font-weight: 300;
+    .b2b-catalog-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       color: var(--gold);
-      letter-spacing: 0.1em;
-      padding-top: 3px;
+      margin-bottom: 6px;
     }
-    .benefit-item h3 {
-      font-family: var(--sans);
-      font-size: 14px;
-      font-weight: 600;
+    .b2b-catalog-title {
+      font-family: var(--serif);
+      font-size: 22px;
       color: var(--white);
-      margin-bottom: 4px;
+      line-height: 1.25;
+      margin-bottom: 20px;
     }
-    .benefit-item p { font-size: 13px; line-height: 1.65; margin: 0; }
+    .b2b-catalog-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 13px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .b2b-catalog-btn:hover { background: #c9a43a; }
+    .b2b-catalog-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; flex-shrink: 0; }
 
     .b2b-cta {
       margin-top: 40px;
@@ -1508,11 +1520,11 @@
       .b2b-grid,
       .ueber-grid,
       .kontakt-grid { grid-template-columns: 1fr; gap: 48px; }
+      .b2b-hero-img { height: 360px; }
       .b2b-kpi-strip { grid-template-columns: 1fr; }
-      .b2b-kpi { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .b2b-kpi { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 24px 28px; }
       .b2b-kpi:last-child { border-bottom: none; }
-      .b2b-banner { height: 200px; margin-bottom: 40px; }
-      .b2b-kpi-num { font-size: 32px; }
+      .b2b-kpi-num { font-size: 36px; }
 
       .steps-grid { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr; }
@@ -2094,25 +2106,26 @@
 <section id="b2b">
   <div class="container">
 
-    <!-- Cinematic banner -->
-    <img src="images/b2b-banner.jpg" alt="Pinienkerne – Rohstoff aus Sibirien" class="b2b-banner" />
-
-    <!-- KPI strip -->
-    <div class="b2b-kpi-strip">
-      <div class="b2b-kpi">
-        <div class="b2b-kpi-num">Nr. 1</div>
-        <div class="b2b-kpi-label">Erstes seiner Art</div>
-        <div class="b2b-kpi-sub">Kein vergleichbares Produkt auf dem deutschen Markt</div>
-      </div>
-      <div class="b2b-kpi">
-        <div class="b2b-kpi-num">+15 %</div>
-        <div class="b2b-kpi-label">Marktwachstum p.a.</div>
-        <div class="b2b-kpi-sub">Koffeinfreie &amp; pflanzliche Alternativen im Aufwind</div>
-      </div>
-      <div class="b2b-kpi">
-        <div class="b2b-kpi-num">EU</div>
-        <div class="b2b-kpi-label">Vollzertifiziert</div>
-        <div class="b2b-kpi-sub">VO 1169/2011 · EORI · Veterinärzertifikate vorhanden</div>
+    <!-- Banner photo + KPI overlay -->
+    <div class="b2b-hero">
+      <img src="images/b2b-banner.jpg" alt="Pinienkerne" class="b2b-hero-img" />
+      <div class="b2b-hero-overlay"></div>
+      <div class="b2b-kpi-strip">
+        <div class="b2b-kpi">
+          <div class="b2b-kpi-num">Nr. 1</div>
+          <div class="b2b-kpi-label">Erstes seiner Art</div>
+          <div class="b2b-kpi-sub">Kein Vergleichsprodukt auf dem deutschen Markt</div>
+        </div>
+        <div class="b2b-kpi">
+          <div class="b2b-kpi-num">+15 %</div>
+          <div class="b2b-kpi-label">Marktwachstum p.a.</div>
+          <div class="b2b-kpi-sub">Koffeinfreie &amp; pflanzliche Alternativen im Aufwind</div>
+        </div>
+        <div class="b2b-kpi">
+          <div class="b2b-kpi-num">EU</div>
+          <div class="b2b-kpi-label">Vollzertifiziert</div>
+          <div class="b2b-kpi-sub">VO 1169/2011 · EORI · Veterinärzertifikate</div>
+        </div>
       </div>
     </div>
 
@@ -2122,15 +2135,7 @@
         <span class="tag">Für Händler &amp; Importeure</span>
         <h2>Ihr exklusiver Partner für den deutschen Markt</h2>
         <div class="divider"></div>
-        <p>
-          Pinienkaffee ist das erste Produkt seiner Art in Deutschland. Als einziger Importeur
-          und Vertreiber bieten wir Einzelhandelspartnern exklusive Konditionen und einen
-          etablierten Lieferprozess.
-        </p>
-        <p>
-          Ideal für Bio-, Wellness- und Spezialitätenregal – mit klarem Mehrwert für
-          gesundheitsbewusste Konsumenten, die nach echten Alternativen suchen.
-        </p>
+        <p>Das erste koffeinfreie Piniennuss-Getränk in Deutschland — sofort listungsfähig, EU-zertifiziert, mit etabliertem Lieferprozess.</p>
 
         <div class="retailers-list">
           <a href="https://www.rewe.de" target="_blank" rel="noopener" class="retailer-chip">REWE</a>
@@ -2149,59 +2154,21 @@
           <a href="#kontakt" class="btn btn-gold">Anfrage senden</a>
           <a href="mailto:info@machen97.com" class="btn btn-outline-white">info@machen97.com</a>
         </div>
-
-        <div class="pdf-download-block">
-          <span class="pdf-label">Produktbroschüre</span>
-          <a href="pinienkaffee-booklet.pdf" download="Pinienkaffee-Produktbroschüre.pdf" class="btn-pdf-download">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            PDF herunterladen
-          </a>
-        </div>
       </div>
 
+      <!-- Catalog download card -->
       <div class="b2b-right">
-
-        <!-- Lifestyle photo -->
-        <img src="images/b2b-lifestyle.jpg" alt="Pinienkaffee – das Getränk" class="b2b-lifestyle" />
-
-        <div class="b2b-benefits">
-
-          <div class="benefit-item">
-            <div class="benefit-num">01 —</div>
-            <div>
-              <h3>Alleinstellungsmerkmal</h3>
-              <p>Kein vergleichbares Produkt auf dem deutschen Markt. Maximales Regalinteresse, null Vergleichsdruck.</p>
-            </div>
+        <div class="b2b-catalog-card btn-pdf-download" onclick="">
+          <img src="images/b2b-lifestyle.jpg" alt="Produktkatalog Pinienkaffee" />
+          <div class="b2b-catalog-overlay"></div>
+          <div class="b2b-catalog-content">
+            <div class="b2b-catalog-label">Produktkatalog 2025</div>
+            <div class="b2b-catalog-title">Alle Produkte, Konditionen &amp; technische Daten</div>
+            <a href="pinienkaffee-booklet.pdf" download="Pinienkaffee-Produktkatalog.pdf" class="b2b-catalog-btn">
+              <svg viewBox="0 0 24 24" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              PDF herunterladen
+            </a>
           </div>
-
-          <div class="benefit-item">
-            <div class="benefit-num">02 —</div>
-            <div>
-              <h3>EU-Zertifizierung vollständig</h3>
-              <p>VO 1169/2011, EORI-Nummer und Veterinärzertifikate vorhanden. Sofort listungsfähig.</p>
-            </div>
-          </div>
-
-          <div class="benefit-item">
-            <div class="benefit-num">03 —</div>
-            <div>
-              <h3>Wachstumsmarkt</h3>
-              <p>+15 % p.a. bei koffeinfreien pflanzlichen Getränken. Pinienkaffee ist früh drin.</p>
-            </div>
-          </div>
-
-          <div class="benefit-item">
-            <div class="benefit-num">04 —</div>
-            <div>
-              <h3>Flexible Konditionen</h3>
-              <p>Individuelle MOQ, Großhandelspreise und direkte Lieferkette aus Bergisch Gladbach.</p>
-            </div>
-          </div>
-
         </div>
       </div>
 

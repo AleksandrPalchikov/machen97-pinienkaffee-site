@@ -725,10 +725,58 @@
     #b2b p { color: rgba(255,255,255,0.55); }
     #b2b .divider { background: var(--gold); }
 
+    /* B2B cinematic banner */
+    .b2b-banner {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: center 60%;
+      display: block;
+      opacity: 0.75;
+      border-radius: 8px;
+      margin-bottom: 64px;
+    }
+
+    /* B2B KPI strip */
+    .b2b-kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 72px;
+    }
+    .b2b-kpi {
+      padding: 32px 36px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .b2b-kpi:last-child { border-right: none; }
+    .b2b-kpi-num {
+      font-family: var(--serif);
+      font-size: 44px;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .b2b-kpi-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 4px;
+    }
+    .b2b-kpi-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
     .b2b-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 100px;
+      gap: 80px;
       align-items: start;
     }
 
@@ -758,40 +806,56 @@
       color: var(--gold);
     }
 
-    .b2b-right {
-      padding-top: 8px;
+    /* Right column: lifestyle photo + benefits */
+    .b2b-right { padding-top: 0; }
+
+    .b2b-lifestyle {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 24px;
     }
 
     .b2b-benefits {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     .benefit-item {
-      padding: 28px;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 6px;
+      padding: 24px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
       transition: var(--transition);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 20px;
+      align-items: start;
     }
-    .benefit-item:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.12); }
+    .benefit-item:last-child { border-bottom: none; }
+    .benefit-item:hover { background: rgba(255,255,255,0.03); }
 
     .benefit-item .benefit-num {
       font-family: var(--serif);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 300;
       color: var(--gold);
       letter-spacing: 0.1em;
-      margin-bottom: 10px;
+      padding-top: 3px;
     }
     .benefit-item h3 {
       font-family: var(--sans);
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 600;
       color: var(--white);
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
-    .benefit-item p { font-size: 14px; line-height: 1.7; }
+    .benefit-item p { font-size: 13px; line-height: 1.65; margin: 0; }
 
     .b2b-cta {
       margin-top: 40px;
@@ -1444,6 +1508,11 @@
       .b2b-grid,
       .ueber-grid,
       .kontakt-grid { grid-template-columns: 1fr; gap: 48px; }
+      .b2b-kpi-strip { grid-template-columns: 1fr; }
+      .b2b-kpi { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .b2b-kpi:last-child { border-bottom: none; }
+      .b2b-banner { height: 200px; margin-bottom: 40px; }
+      .b2b-kpi-num { font-size: 32px; }
 
       .steps-grid { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr; }
@@ -2024,6 +2093,29 @@
 ============================= -->
 <section id="b2b">
   <div class="container">
+
+    <!-- Cinematic banner -->
+    <img src="images/b2b-banner.jpg" alt="Pinienkerne – Rohstoff aus Sibirien" class="b2b-banner" />
+
+    <!-- KPI strip -->
+    <div class="b2b-kpi-strip">
+      <div class="b2b-kpi">
+        <div class="b2b-kpi-num">Nr. 1</div>
+        <div class="b2b-kpi-label">Erstes seiner Art</div>
+        <div class="b2b-kpi-sub">Kein vergleichbares Produkt auf dem deutschen Markt</div>
+      </div>
+      <div class="b2b-kpi">
+        <div class="b2b-kpi-num">+15 %</div>
+        <div class="b2b-kpi-label">Marktwachstum p.a.</div>
+        <div class="b2b-kpi-sub">Koffeinfreie &amp; pflanzliche Alternativen im Aufwind</div>
+      </div>
+      <div class="b2b-kpi">
+        <div class="b2b-kpi-num">EU</div>
+        <div class="b2b-kpi-label">Vollzertifiziert</div>
+        <div class="b2b-kpi-sub">VO 1169/2011 · EORI · Veterinärzertifikate vorhanden</div>
+      </div>
+    </div>
+
     <div class="b2b-grid">
 
       <div class="b2b-left">
@@ -2036,8 +2128,8 @@
           etablierten Lieferprozess.
         </p>
         <p>
-          Unser Produkt eignet sich ideal für das Bio-, Wellness- und Spezialitätenregal –
-          mit klarem Mehrwert für gesundheitsbewusste Konsumenten.
+          Ideal für Bio-, Wellness- und Spezialitätenregal – mit klarem Mehrwert für
+          gesundheitsbewusste Konsumenten, die nach echten Alternativen suchen.
         </p>
 
         <div class="retailers-list">
@@ -2072,30 +2164,42 @@
       </div>
 
       <div class="b2b-right">
+
+        <!-- Lifestyle photo -->
+        <img src="images/b2b-lifestyle.jpg" alt="Pinienkaffee – das Getränk" class="b2b-lifestyle" />
+
         <div class="b2b-benefits">
 
           <div class="benefit-item">
             <div class="benefit-num">01 —</div>
-            <h3>Erstes Produkt seiner Art</h3>
-            <p>Pinienkaffee ist ein Alleinstellungsmerkmal. Kein vergleichbares Produkt auf dem deutschen Markt – maximales Regalinteresse.</p>
+            <div>
+              <h3>Alleinstellungsmerkmal</h3>
+              <p>Kein vergleichbares Produkt auf dem deutschen Markt. Maximales Regalinteresse, null Vergleichsdruck.</p>
+            </div>
           </div>
 
           <div class="benefit-item">
             <div class="benefit-num">02 —</div>
-            <h3>Vollständige EU-Zertifizierung</h3>
-            <p>Alle Import- und Kennzeichnungsanforderungen nach EU-Verordnung 1169/2011 sind erfüllt. EORI-Nummer und Veterinärzertifikate vorhanden.</p>
+            <div>
+              <h3>EU-Zertifizierung vollständig</h3>
+              <p>VO 1169/2011, EORI-Nummer und Veterinärzertifikate vorhanden. Sofort listungsfähig.</p>
+            </div>
           </div>
 
           <div class="benefit-item">
             <div class="benefit-num">03 —</div>
-            <h3>Wachsender Markt</h3>
-            <p>Der Markt für koffeinfreie, pflanzliche Alternativen wächst jährlich um über 15 %. Pinienkaffee trifft den Nerv des Zeitgeists.</p>
+            <div>
+              <h3>Wachstumsmarkt</h3>
+              <p>+15 % p.a. bei koffeinfreien pflanzlichen Getränken. Pinienkaffee ist früh drin.</p>
+            </div>
           </div>
 
           <div class="benefit-item">
             <div class="benefit-num">04 —</div>
-            <h3>Individuelle Konditionen</h3>
-            <p>Flexible Mindestbestellmengen, attraktive Großhandelspreise und zuverlässige Lieferkette aus Bergisch Gladbach.</p>
+            <div>
+              <h3>Flexible Konditionen</h3>
+              <p>Individuelle MOQ, Großhandelspreise und direkte Lieferkette aus Bergisch Gladbach.</p>
+            </div>
           </div>
 
         </div>

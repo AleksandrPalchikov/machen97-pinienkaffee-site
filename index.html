@@ -551,39 +551,94 @@
     .zubereitung-header {
       text-align: center;
       max-width: 600px;
-      margin: 0 auto 72px;
+      margin: 0 auto 64px;
     }
 
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      background: var(--light);
-      border-radius: 8px;
-      overflow: hidden;
+      gap: 0;
     }
 
     .step {
-      background: var(--white);
-      padding: 40px 32px;
+      position: relative;
+      padding: 0 28px 48px;
+      background: transparent;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
+      overflow: hidden;
     }
 
+    /* Connecting line from icon to next step icon */
+    .step::after {
+      content: '';
+      position: absolute;
+      top: 22px;
+      left: calc(28px + 44px);
+      right: -28px;
+      height: 1px;
+      background: linear-gradient(to right, rgba(61,107,79,0.3), rgba(61,107,79,0.07));
+    }
+    .step:last-child::after { display: none; }
+
+    /* Icon circle */
+    .step-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      background: var(--cream);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .step:hover .step-icon {
+      background: var(--green);
+      color: var(--white);
+    }
+    .step-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Giant decorative step number — background texture */
     .step-num {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
       font-family: var(--serif);
-      font-size: 48px;
+      font-size: 100px;
       font-weight: 300;
-      color: var(--light);
+      color: var(--green);
+      opacity: 0.055;
       line-height: 1;
+      pointer-events: none;
+      z-index: 0;
+      user-select: none;
     }
 
-
-
-    .step h3 { font-size: 17px; font-family: var(--sans); font-weight: 600; }
-    .step p { font-size: 14px; }
+    .step h3 {
+      font-size: 16px;
+      font-family: var(--sans);
+      font-weight: 600;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .step p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--gray);
+      position: relative;
+      z-index: 1;
+    }
 
     /* =====================
        PRODUKTE (Shop)
@@ -1667,6 +1722,10 @@
       .b2b-kpi-num { font-size: 36px; }
 
       .steps-grid { grid-template-columns: 1fr 1fr; }
+      /* Hide connectors on mobile — steps stack vertically */
+      .step::after { display: none; }
+      .step { padding: 20px 20px 36px; }
+      .step-num { font-size: 72px; bottom: 4px; right: 8px; }
       .products-grid { grid-template-columns: 1fr; }
       .gesundheit-grid { grid-template-columns: 1fr; gap: 1px; }
       .gesundheit-stat { font-size: 36px; }
@@ -2061,25 +2120,66 @@
 
     <div class="steps-grid">
 
+      <!-- Schritt 1: Messen -->
       <div class="step">
+        <div class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Spoon bowl -->
+            <ellipse cx="12" cy="7.5" rx="4.5" ry="4"/>
+            <!-- Spoon handle -->
+            <path d="M12 11.5 L11 21"/>
+            <!-- Dashed measure line -->
+            <line x1="8.5" y1="7.5" x2="15.5" y2="7.5" stroke-dasharray="1.5 1.5" stroke-width="1"/>
+          </svg>
+        </div>
         <div class="step-num">01</div>
         <h3>Messen</h3>
         <p>3–5 Teelöffel (ca. 22–25 g) Pinienkaffee abmessen.</p>
       </div>
 
+      <!-- Schritt 2: Erhitzen -->
       <div class="step">
+        <div class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <!-- Three heat-wave lines -->
+            <path d="M7 18 Q9.5 15.5 12 18 Q14.5 20.5 17 18"/>
+            <path d="M7 13 Q9.5 10.5 12 13 Q14.5 15.5 17 13"/>
+            <path d="M7 8  Q9.5 5.5  12 8  Q14.5 10.5 17 8"/>
+          </svg>
+        </div>
         <div class="step-num">02</div>
         <h3>Erhitzen</h3>
         <p>200 ml Wasser oder Milch auf 80–90 °C erhitzen (nicht kochen lassen).</p>
       </div>
 
+      <!-- Schritt 3: Aufgießen -->
       <div class="step">
+        <div class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Water drop -->
+            <path d="M12 3 Q17.5 9.5 17.5 14 A5.5 5.5 0 0 1 6.5 14 Q6.5 9.5 12 3 Z"/>
+            <!-- Small motion lines = pour -->
+            <line x1="18.5" y1="7" x2="20.5" y2="5"/>
+            <line x1="19.5" y1="10" x2="21.5" y2="10"/>
+          </svg>
+        </div>
         <div class="step-num">03</div>
         <h3>Aufgießen</h3>
         <p>Heißes Wasser über den Pinienkaffee gießen und gut umrühren.</p>
       </div>
 
+      <!-- Schritt 4: Ziehen lassen -->
       <div class="step">
+        <div class="step-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Clock face -->
+            <circle cx="12" cy="13" r="8"/>
+            <!-- Clock hands: 12 o'clock + 3 min -->
+            <polyline points="12 9 12 13 15 15"/>
+            <!-- Crown -->
+            <line x1="10" y1="3.5" x2="14" y2="3.5"/>
+          </svg>
+        </div>
         <div class="step-num">04</div>
         <h3>Ziehen lassen</h3>
         <p>3–5 Minuten ziehen lassen – und genießen.</p>

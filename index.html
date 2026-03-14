@@ -821,6 +821,85 @@
       background: var(--cream);
     }
 
+    /* ── Gesundheit section ─────────────────────────────────── */
+    #gesundheit {
+      background: var(--white);
+    }
+    .gesundheit-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 64px;
+    }
+    .gesundheit-header h2 {
+      margin-bottom: 16px;
+    }
+    .gesundheit-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+    .gesundheit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .gesundheit-card {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: var(--transition);
+    }
+    .gesundheit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+    }
+    .gesundheit-icon {
+      width: 40px;
+      height: 40px;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+    .gesundheit-icon svg {
+      width: 40px;
+      height: 40px;
+    }
+    .gesundheit-card h3 {
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.3;
+      color: var(--black);
+    }
+    .gesundheit-card p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--gray);
+      flex: 1;
+    }
+    .gesundheit-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(61,107,79,0.08);
+      padding: 4px 10px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+    .gesundheit-disclaimer {
+      font-size: 12px;
+      color: var(--gray-light);
+      line-height: 1.7;
+      border-top: 1px solid var(--light);
+      padding-top: 24px;
+      max-width: 760px;
+    }
+
     .nahrwerte-header { text-align: center; max-width: 560px; margin: 0 auto 72px; }
 
     .nahrwerte-tabs {
@@ -1325,6 +1404,7 @@
 
       .steps-grid { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr; }
+      .gesundheit-grid { grid-template-columns: 1fr; gap: 16px; }
       .product-card-img { aspect-ratio: 4/3; padding: 16px; }
       .form-row { grid-template-columns: 1fr; }
       .shop-header { flex-direction: column; align-items: flex-start; }
@@ -1458,6 +1538,7 @@
   <ul class="nav-links">
     <li><a href="#produkt">Produkt</a></li>
     <li><a href="#shop">Shop</a></li>
+    <li><a href="#gesundheit">Gesundheit</a></li>
     <li><a href="#b2b">Für Händler</a></li>
     <li><a href="#ueber-uns">Über uns</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
@@ -1804,6 +1885,86 @@
         gemahlener Zimt, gemahlener Ingwer, gemahlener Kardamom, gemahlene Nelken, gemahlene Kurkuma.
         Kann Spuren von anderen <strong>NÜSSEN</strong> enthalten.
       </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================
+     GESUNDHEIT
+============================= -->
+<section id="gesundheit">
+  <div class="container">
+
+    <div class="gesundheit-header">
+      <p class="section-label">Wissenschaft &amp; Natur</p>
+      <h2>Mehr als ein Getränk</h2>
+      <p class="gesundheit-sub">Kein Koffein. Keine Zusätze. Dafür ein Profil an bioaktiven Stoffen, das kaum ein anderes Heißgetränk bieten kann.</p>
+    </div>
+
+    <div class="gesundheit-grid">
+
+      <div class="gesundheit-card">
+        <div class="gesundheit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18.364 5.636a9 9 0 1 1-12.728 0"/><path d="M12 3v9"/></svg>
+        </div>
+        <h3>100 % koffeinfrei</h3>
+        <p>Kein Kreislaufstress, kein Zittern, keine Schlafstörungen. Volle Wärme und Genuss – für jeden, zu jeder Zeit.</p>
+        <div class="gesundheit-tag">Geeignet für Kinder, Schwangere &amp; Senioren</div>
+      </div>
+
+      <div class="gesundheit-card">
+        <div class="gesundheit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3>Pinolensäure — einzigartig entzündungshemmend</h3>
+        <p>Diese seltene Omega-6-Fettsäure aus Pinienkernen reduziert nachweislich Entzündungsmarker (TNF-α, IL-6, IL-1β) um bis zu 25 %.*</p>
+        <div class="gesundheit-tag">Einzigartiger Wirkstoff</div>
+      </div>
+
+      <div class="gesundheit-card">
+        <div class="gesundheit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Alle 9 essenziellen Aminosäuren</h3>
+        <p>Vollständiges Proteinprofil — einschließlich Tryptophan, Leucin und Lysin. Unterstützt Regeneration, Muskelaufbau und einen ausgeglichenen Stoffwechsel.</p>
+        <div class="gesundheit-tag">Besonders wertvoll für Vegetarier &amp; Veganer</div>
+      </div>
+
+      <div class="gesundheit-card">
+        <div class="gesundheit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Magnesium &amp; Mangan</h3>
+        <p>Pinienkerne liefern bis zu 383 % des Tagesbedarfs an Mangan sowie viel Magnesium — für Nervensystem, Energiestoffwechsel und gesunden Schlaf.*</p>
+        <div class="gesundheit-tag">383 % Mangan · Tagesbedarf</div>
+      </div>
+
+      <div class="gesundheit-card">
+        <div class="gesundheit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+        </div>
+        <h3>Antioxidantien &amp; Polyphenole</h3>
+        <p>Hoher Gehalt an Vitamin E, Polyphenolen und Tanninen. Schützen Zellen vor oxidativem Stress und unterstützen das Immunsystem.*</p>
+        <div class="gesundheit-tag">Freie Radikale · Zellschutz</div>
+      </div>
+
+      <div class="gesundheit-card">
+        <div class="gesundheit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
+        </div>
+        <h3>Metabolische Unterstützung</h3>
+        <p>Pinolensäure aktiviert PPAR-Rezeptoren und Sirtuin3 — Mechanismen, die Fettstoffwechsel, Sättigungsgefühl und Gewichtsmanagement positiv beeinflussen.*</p>
+        <div class="gesundheit-tag">Sättigung · Lipidstoffwechsel</div>
+      </div>
+
+    </div>
+
+    <div class="gesundheit-disclaimer">
+      * Alle zitierten Studien und wissenschaftlichen Daten beziehen sich auf Pinienkerne (<em>Pinus sibirica</em> und verwandte Arten) als Rohstoff.
+      Eigenständige klinische Studien zum fertigen Produkt Pinienkaffee wurden bislang nicht durchgeführt.
+      Die Angaben basieren auf peer-reviewten Fachartikeln (u.a. PubMed, ScienceDirect).
     </div>
 
   </div>

@@ -1533,9 +1533,55 @@
       .container { padding: 0 24px; }
       nav { padding: 0 24px; }
 
-      #hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 60px 24px 60px; max-width: 100%; }
-      .hero-right { height: 60vw; min-height: 360px; }
+      /* Mobile hero: full-bleed photo with text overlay */
+      #hero {
+        display: block;
+        position: relative;
+        min-height: 100svh;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+      .hero-right {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        min-height: unset;
+      }
+      .hero-img-placeholder::after {
+        background: linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.10) 0%,
+          rgba(0,0,0,0.05) 25%,
+          rgba(0,0,0,0.55) 55%,
+          rgba(0,0,0,0.82) 100%
+        );
+      }
+      .hero-left {
+        position: relative;
+        z-index: 2;
+        min-height: 100svh;
+        min-height: 100vh;
+        padding: 110px 28px 52px;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      .hero-left h1 { color: #fff; }
+      .hero-left p   { color: rgba(255,255,255,0.82); }
+      .hero-eyebrow span { color: var(--gold); }
+      .hero-eyebrow::before { background: var(--gold); }
+      .hero-badge { color: rgba(255,255,255,0.65); }
+      .hero-actions .btn-dark {
+        background: #fff;
+        color: var(--black);
+        border-color: #fff;
+      }
+      .hero-actions .btn-outline {
+        border-color: rgba(255,255,255,0.55);
+        color: #fff;
+      }
+      .hero-product-label { display: none; }
 
       .produkt-grid,
       .b2b-grid,

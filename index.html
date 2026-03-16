@@ -816,10 +816,10 @@
       color: var(--white);
       padding: 110px 0;
     }
-    #b2b .tag { color: var(--gold); }
+    #b2b .tag { color: rgba(255,255,255,0.45); }
     #b2b h2 { color: var(--white); }
     #b2b p { color: rgba(255,255,255,0.55); }
-    #b2b .divider { background: var(--gold); }
+    #b2b .divider { background: rgba(255,255,255,0.15); }
 
     /* B2B hero: banner + KPI overlay */
     .b2b-hero {
@@ -857,7 +857,7 @@
     .b2b-kpi-num {
       font-family: var(--serif);
       font-size: 52px;
-      color: var(--gold);
+      color: #6dab82;
       line-height: 1;
       letter-spacing: -0.02em;
       margin-bottom: 8px;
@@ -903,7 +903,7 @@
       transition: var(--transition);
       text-decoration: none;
     }
-    .retailer-chip:hover { border-color: var(--gold); color: var(--gold); }
+    .retailer-chip:hover { border-color: rgba(255,255,255,0.6); color: rgba(255,255,255,0.9); }
 
     /* Right column: catalog download card */
     .b2b-right { padding-top: 0; }
@@ -937,7 +937,7 @@
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: rgba(255,255,255,0.45);
       margin-bottom: 6px;
     }
     .b2b-catalog-title {
@@ -951,7 +951,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: var(--gold);
+      background: rgba(255,255,255,0.92);
       color: var(--black);
       font-size: 12px;
       font-weight: 700;
@@ -960,9 +960,9 @@
       padding: 13px 24px;
       border-radius: 4px;
       text-decoration: none;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, opacity 0.2s ease;
     }
-    .b2b-catalog-btn:hover { background: #c9a43a; }
+    .b2b-catalog-btn:hover { background: var(--white); opacity: 0.95; }
     .b2b-catalog-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; flex-shrink: 0; }
 
     .b2b-cta {
@@ -973,11 +973,11 @@
     }
 
     .btn-gold {
-      background: var(--gold);
+      background: var(--white);
       color: var(--black);
-      border-color: var(--gold);
+      border-color: var(--white);
     }
-    .btn-gold:hover { background: #b8942c; border-color: #b8942c; }
+    .btn-gold:hover { background: rgba(255,255,255,0.88); border-color: rgba(255,255,255,0.88); }
 
     .btn-outline-white {
       background: transparent;

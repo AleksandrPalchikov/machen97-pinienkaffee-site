@@ -1362,13 +1362,14 @@
 
     .ueber-img-badge {
       position: absolute;
-      bottom: -20px;
-      right: -20px;
+      bottom: 20px;
+      right: 20px;
       background: var(--gold);
       color: var(--black);
       border-radius: 8px;
       padding: 20px 24px;
       text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
     }
     .ueber-img-badge .badge-year {
       font-family: var(--serif);
@@ -1385,28 +1386,46 @@
     }
 
     .ueber-caption {
-      margin-top: 24px;
-      padding: 20px 24px;
-      border-left: 3px solid var(--gold);
-      background: var(--green-pale);
-      border-radius: 0 6px 6px 0;
+      margin-top: 16px;
+      padding: 28px 28px 24px;
+      background: #0b1e12;
+      border-radius: 8px;
+    }
+    .ueber-caption-kicker {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
     }
     .ueber-caption-stat {
       font-family: var(--serif);
-      font-size: 36px;
-      font-weight: 400;
-      color: var(--green-dark);
+      font-size: 64px;
+      font-weight: 300;
+      color: #fff;
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
     }
     .ueber-caption-stat em {
       font-style: normal;
       color: var(--gold);
     }
+    .ueber-caption-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
     .ueber-caption-text {
       font-size: 13px;
-      line-height: 1.6;
-      color: var(--gray);
+      line-height: 1.75;
+      color: rgba(255,255,255,0.62);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 18px;
     }
 
     .ueber-prod-strip {
@@ -1737,7 +1756,7 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
 
-      .ueber-img-badge { right: 0; bottom: 0; }
+      .ueber-img-badge { right: 16px; bottom: 16px; }
       .produkt-stat-card { left: 0; bottom: 0; }
 
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -2549,10 +2568,13 @@
         </div>
 
         <div class="ueber-caption">
-          <div class="ueber-caption-stat"><em>214</em> Experimente</div>
+          <div class="ueber-caption-kicker">Entwicklung &amp; Qualitätssicherung</div>
+          <div class="ueber-caption-stat"><em>214</em></div>
+          <div class="ueber-caption-label">Produktionsexperimente</div>
           <div class="ueber-caption-text">
-            Vor dem Markteintritt haben wir zwei Jahre lang die Produktionstechnologie verfeinert —
-            um den richtigen Geschmack, die perfekte Konsistenz und gleichbleibende Qualität zu erreichen.
+            Zwei Jahre Entwicklungsarbeit vor dem Markteintritt — bis Geschmack,
+            Konsistenz und Qualität reproduzierbar auf dem Niveau lagen, das wir
+            unseren Handelspartnern garantieren können.
           </div>
         </div>
 
@@ -2572,7 +2594,7 @@
           spezialisiert auf den Import und Vertrieb von pflanzlichen Spezialitätengetränken und Naturprodukten.
         </p>
         <p>
-          Gegründet von Aleksandr Palchikov und Waldemar Eichmann entwickeln wir neue Produktkategorien
+          Gegründet von Aleksandr Palchikov und Wladimir Eichmann entwickeln wir neue Produktkategorien
           für den deutschen Lebensmittelmarkt – mit Fokus auf Qualität, Transparenz und authentischen Rohstoffen.
         </p>
 
@@ -2589,10 +2611,10 @@
           </a>
           <a href="https://vovanglobal.de" target="_blank" rel="noopener" class="founder-card">
             <div class="founder-photo" style="background-image: url('images/founder_eichmann.jpg'); background-size: 88%; background-position: center 8%;">
-              <img src="images/founder_eichmann.jpg" alt="Waldemar Eichmann" />
+              <img src="images/founder_eichmann.jpg" alt="Wladimir Eichmann" />
             </div>
             <div class="founder-info">
-              <span class="founder-name">Waldemar Eichmann</span>
+              <span class="founder-name">Wladimir Eichmann</span>
               <span class="founder-role">Mitgründer &amp; Investor</span>
               <span class="founder-link-hint">vovanglobal.de ↗</span>
             </div>

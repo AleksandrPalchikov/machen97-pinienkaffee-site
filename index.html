@@ -1950,8 +1950,46 @@
         "offers": {
           "@type": "Offer",
           "availability": "https://schema.org/InStock",
+          "price": "0",
           "priceCurrency": "EUR",
-          "seller": { "@id": "https://machen97.com/#organization" }
+          "priceValidUntil": "2027-12-31",
+          "url": "https://machen97.com/#kontakt",
+          "seller": { "@id": "https://machen97.com/#organization" },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "EUR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "DE"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 3,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 2,
+                "maxValue": 5,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "DE",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          }
         },
         "additionalProperty": [
           { "@type": "PropertyValue", "name": "Koffeinfrei", "value": "Ja" },

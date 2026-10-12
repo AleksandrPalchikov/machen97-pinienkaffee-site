@@ -1,0 +1,13 @@
+/.git/
+/.github/
+/.claude/
+/.wrangler/
+/node_modules/
+/sessions/
+/content/
+/scripts/
+/docs/
+/.DS_Store
+/*.zip
+/wrangler.jsonc
+/package*.json

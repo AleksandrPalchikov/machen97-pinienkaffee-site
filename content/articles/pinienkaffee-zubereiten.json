@@ -1,0 +1,47 @@
+{
+  "slug": "pinienkaffee-zubereiten",
+  "title": "Pinienkaffee zubereiten: Menge, Temperatur und Ziehzeit",
+  "description": "Pinienkaffee in vier Schritten zubereiten: 3–5 Teelöffel, 200 ml Wasser oder Milch, 80–90 °C und 3–5 Minuten Ziehzeit.",
+  "category": "article",
+  "published": "2026-10-12T18:03:42+03:00",
+  "modified": "2026-10-12T18:03:42+03:00",
+  "status": "published",
+  "image": "/images/photo_08.jpg",
+  "image_alt": "Pinienkaffee Classic von M97 Factory",
+  "intro": [
+    "Für die Zubereitung von Pinienkaffee empfehlen wir eine Thermoskanne oder French Press. Die Anleitung folgt den Angaben auf unserer Produktseite: Sie benötigen 3–5 Teelöffel Pinienkaffee und 200 ml Wasser oder Milch."
+  ],
+  "sections": [
+    {
+      "heading": "1. Die Menge abmessen",
+      "paragraphs": [
+        "Messen Sie 3–5 Teelöffel Pinienkaffee ab. Das entspricht nach unserer Zubereitungsempfehlung etwa 22–25 g. Geben Sie die abgemessene Menge in das Gefäß, in dem Sie das Getränk zubereiten möchten."
+      ]
+    },
+    {
+      "heading": "2. Wasser oder Milch erhitzen",
+      "paragraphs": [
+        "Erhitzen Sie 200 ml Wasser oder Milch auf 80–90 °C. Lassen Sie die Flüssigkeit nicht kochen. Mit einem Küchenthermometer lässt sich die Temperatur direkt überprüfen."
+      ]
+    },
+    {
+      "heading": "3. Aufgießen und umrühren",
+      "paragraphs": [
+        "Gießen Sie die heiße Flüssigkeit über den Pinienkaffee und rühren Sie gut um. Für die Zubereitung können Sie die auf der Produktseite empfohlene Thermoskanne oder French Press verwenden."
+      ]
+    },
+    {
+      "heading": "4. Ziehen lassen",
+      "paragraphs": [
+        "Lassen Sie den Pinienkaffee 3–5 Minuten ziehen. Anschließend können Sie Ihr Getränk genießen."
+      ]
+    },
+    {
+      "heading": "Die Empfehlung auf einen Blick",
+      "paragraphs": [
+        "3–5 Teelöffel Pinienkaffee, 200 ml Wasser oder Milch, 80–90 °C und 3–5 Minuten Ziehzeit. Diese Angaben entsprechen der Anleitung auf machen97.com. Beachten Sie zusätzlich die Hinweise auf Ihrer Produktverpackung."
+      ],
+      "link": { "label": "Zur Produktseite und Zubereitung", "href": "/#zubereitung" }
+    }
+  ]
+}

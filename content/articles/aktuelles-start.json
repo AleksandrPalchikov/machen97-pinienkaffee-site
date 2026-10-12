@@ -1,0 +1,37 @@
+{
+  "slug": "aktuelles-start",
+  "title": "Neu: Aktuelles und Artikel von Pinienkaffee",
+  "description": "Ein neuer Ort für Neuigkeiten von Pinienkaffee, praktische Tipps zur Zubereitung und Updates von M97 Factory.",
+  "category": "news",
+  "published": "2026-10-12T18:03:42+03:00",
+  "modified": "2026-10-12T18:03:42+03:00",
+  "status": "published",
+  "image": "/images/photo_07.jpg",
+  "image_alt": "Pinienkaffee von M97 Factory",
+  "intro": [
+    "Auf machen97.com gibt es ab sofort einen eigenen Bereich für Neuigkeiten und Artikel. Hier veröffentlichen wir Updates von Pinienkaffee und praktische Informationen rund um unsere Produkte."
+  ],
+  "sections": [
+    {
+      "heading": "Was Sie hier finden",
+      "paragraphs": [
+        "In den Neuigkeiten teilen wir aktuelle Entwicklungen von M97 Factory. Unsere Artikel widmen sich Fragen aus dem Alltag: Wie bereitet man Pinienkaffee zu? Welche Informationen helfen bei der Auswahl eines Produkts? Wo finden Interessierte weitere Details?",
+        "Jeder Beitrag erhält eine eigene Seite mit Veröffentlichungsdatum. So können Sie Informationen wiederfinden, direkt verlinken und mit anderen teilen."
+      ]
+    },
+    {
+      "heading": "Zum Einstieg: die Zubereitung",
+      "paragraphs": [
+        "Unser erster Artikel fasst die Zubereitungsempfehlung von der Produktseite zusammen: die Menge abmessen, Wasser oder Milch erhitzen, aufgießen und ziehen lassen. Die Anleitung bleibt auch als eigener Beitrag erreichbar."
+      ],
+      "link": { "label": "Zur Zubereitungsanleitung", "href": "/aktuelles/pinienkaffee-zubereiten/" }
+    },
+    {
+      "heading": "Mit uns in Kontakt bleiben",
+      "paragraphs": [
+        "Bei Fragen zu unseren Produkten oder einer Zusammenarbeit erreichen Sie Machen97 UG über das Kontaktformular der Website. Neue Veröffentlichungen können Sie außerdem über die RSS-Liste dieses Bereichs verfolgen."
+      ],
+      "link": { "label": "Kontakt aufnehmen", "href": "/#kontakt" }
+    }
+  ]
+}

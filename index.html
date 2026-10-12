@@ -3009,7 +3009,7 @@
         form.reset();
         btn.innerHTML = originalHTML;
         btn.disabled = false;
-        showToastContact(true);
+        window.location.assign('/danke');
       } else {
         throw new Error(json.message || 'Fehler');
       }

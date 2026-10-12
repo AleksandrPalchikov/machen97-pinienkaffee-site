@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#3D6B4F" />
+  <title>Vielen Dank – Pinienkaffee</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #181818;
+      --cream: #F7F4EF;
+      --green: #3D6B4F;
+      --gray: #5E5E5E;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      padding: 22px 40px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .brand-name {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+    .brand-name sup { font-size: 12px; }
+    .brand-sub {
+      margin-top: 4px;
+      color: var(--gray);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    main {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 56px 24px;
+    }
+    .thank-you {
+      width: 100%;
+      max-width: 620px;
+      padding: 64px 40px;
+      background: #fff;
+      border: 1px solid #EDE9E0;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .success-icon {
+      display: grid;
+      place-items: center;
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 28px;
+      background: #EFF5F1;
+      border-radius: 50%;
+      color: var(--green);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(44px, 7vw, 64px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    p {
+      color: var(--gray);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    .back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 36px;
+      padding: 14px 28px;
+      border: 1.5px solid var(--black);
+      border-radius: 4px;
+      background: var(--black);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      line-height: 1.65;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .back:hover { background: #333; border-color: #333; }
+    .back:focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
+    @media (max-width: 480px) {
+      header { padding: 20px 24px; }
+      main { padding: 32px 16px; }
+      .thank-you { padding: 44px 24px; }
+      .back { width: 100%; padding-inline: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .back { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand-name">Pinienkaffee<sup>®</sup></div>
+    <div class="brand-sub">by M97 Factory · Machen97 UG</div>
+  </header>
+  <main>
+    <div class="thank-you">
+      <div class="success-icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <h1>Vielen Dank!</h1>
+      <p>Ihre Nachricht wurde erfolgreich gesendet.<br />Wir melden uns bald bei Ihnen.</p>
+      <a class="back" href="/"><span aria-hidden="true">←</span> Zurück zur Startseite</a>
+    </div>
+  </main>
+</body>
+</html>

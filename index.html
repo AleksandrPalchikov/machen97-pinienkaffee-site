@@ -2022,6 +2022,10 @@
   </script>
   <link rel="stylesheet" href="/aktuelles/home-carousel.css" />
   <script src="/aktuelles/home-carousel.js" defer></script>
+<!-- M97 Google Ads: consent-gated shared tag -->
+<link rel="stylesheet" href="/assets/google-ads.css">
+<script src="/assets/google-ads.js" defer></script>
+<!-- /M97 Google Ads -->
 </head>
 
 <body>
@@ -2852,7 +2856,7 @@
       </div>
     </div>
     <ul id="journal-carousel" class="journal-carousel" tabindex="0" aria-label="Neuigkeiten und Artikel – horizontal blättern">
-      <li><a class="journal-teaser-card" href="/aktuelles/pinienkaffee-wird-pine-nut-latte/" aria-label="Artikel lesen: Aus Pinienkaffee wird PINE NUT LATTE – warum wir den Namen geändert haben"><img src="/images/magazin/pine-nut-latte/label-classic.webp" alt="" width="280" height="308" loading="lazy"><div class="journal-teaser-copy"><span class="journal-category">Neuigkeiten</span><h3>Pinienkaffee wird PINE NUT LATTE</h3><span class="journal-card-arrow" aria-hidden="true">→</span></div></a></li><li><a class="journal-teaser-card" href="/magazin/pine-nut-latte-cappuccino-rezepte/" aria-label="Artikel lesen: Pine Nut Cappuccino &amp; Co.: 7 Ideen mit PINE NUT LATTE"><img src="/images/magazin/pine-nut-latte/hero-pine-nut-cappuccino.webp" alt="" width="280" height="308" loading="lazy"><div class="journal-teaser-copy"><span class="journal-category">Rezepte &amp; Inspiration</span><h3>7 Ideen mit PINE NUT LATTE</h3><span class="journal-card-arrow" aria-hidden="true">→</span></div></a></li><li><a class="journal-teaser-card" href="/aktuelles/pinienkaffee-zubereiten/" aria-label="Artikel lesen: Pinienkaffee zubereiten: Menge, Temperatur und Ziehzeit"><img src="/images/photo_08.jpg" alt="" width="280" height="308" loading="lazy"><div class="journal-teaser-copy"><span class="journal-category">Wissen &amp; Zubereitung</span><h3>Pinienkaffee richtig zubereiten</h3><span class="journal-card-arrow" aria-hidden="true">→</span></div></a></li><li><a class="journal-teaser-card" href="/aktuelles/aktuelles-start/" aria-label="Artikel lesen: Neu: Aktuelles und Artikel von Pinienkaffee"><img src="/images/photo_07.jpg" alt="" width="280" height="308" loading="lazy"><div class="journal-teaser-copy"><span class="journal-category">Neuigkeiten</span><h3>Neuigkeiten von M97 Factory</h3><span class="journal-card-arrow" aria-hidden="true">→</span></div></a></li>
+      <li><a class="journal-teaser-card" href="/magazin/pine-nut-latte-herstellung/" aria-label="Artikel lesen: Wie PINE NUT LATTE entsteht: vom Zapfen in die Tasse"><img src="/images/magazin/pine-nut-latte-herstellung/m97-pine-nut-latte-pinienkerne-sortierung.webp" alt="" width="280" height="308" loading="lazy"><div class="journal-teaser-copy"><span class="journal-category">Wissen &amp; Zubereitung</span><h3>Wie PINE NUT LATTE entsteht: vom Zapfen in die Tasse</h3><span class="journal-card-arrow" aria-hidden="true">→</span></div></a></li><li><a class="journal-teaser-card" href="/aktuelles/pinienkaffee-wird-pine-nut-latte/" aria-label="Artikel lesen: Aus Pinienkaffee wird PINE NUT LATTE – warum wir den Namen geändert haben"><img src="/images/magazin/pine-nut-latte/label-classic.webp" alt="" width="280" height="308" loading="lazy"><div class="journal-teaser-copy"><span class="journal-category">Neuigkeiten</span><h3>Pinienkaffee wird PINE NUT LATTE</h3><span class="journal-card-arrow" aria-hidden="true">→</span></div></a></li><li><a class="journal-teaser-card" href="/magazin/pine-nut-latte-cappuccino-rezepte/" aria-label="Artikel lesen: Pine Nut Cappuccino &amp; Co.: 7 Ideen mit PINE NUT LATTE"><img src="/images/magazin/pine-nut-latte/hero-pine-nut-cappuccino.webp" alt="" width="280" height="308" loading="lazy"><div class="journal-teaser-copy"><span class="journal-category">Rezepte &amp; Inspiration</span><h3>7 Ideen mit PINE NUT LATTE</h3><span class="journal-card-arrow" aria-hidden="true">→</span></div></a></li><li><a class="journal-teaser-card" href="/aktuelles/pinienkaffee-zubereiten/" aria-label="Artikel lesen: Pinienkaffee zubereiten: Menge, Temperatur und Ziehzeit"><img src="/images/photo_08.jpg" alt="" width="280" height="308" loading="lazy"><div class="journal-teaser-copy"><span class="journal-category">Wissen &amp; Zubereitung</span><h3>Pinienkaffee richtig zubereiten</h3><span class="journal-card-arrow" aria-hidden="true">→</span></div></a></li><li><a class="journal-teaser-card" href="/aktuelles/aktuelles-start/" aria-label="Artikel lesen: Neu: Aktuelles und Artikel von Pinienkaffee"><img src="/images/photo_07.jpg" alt="" width="280" height="308" loading="lazy"><div class="journal-teaser-copy"><span class="journal-category">Neuigkeiten</span><h3>Neuigkeiten von M97 Factory</h3><span class="journal-card-arrow" aria-hidden="true">→</span></div></a></li>
     </ul>
   </div>
 </section>
@@ -3031,6 +3035,7 @@
       const json = await res.json();
 
       if (json.success) {
+        if (window.M97Ads) window.M97Ads.recordSuccessfulSubmission();
         form.reset();
         btn.innerHTML = originalHTML;
         btn.disabled = false;

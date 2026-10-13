@@ -9,6 +9,7 @@ import re
 import xml.etree.ElementTree as ET
 import argparse
 import editorial
+import google_tags
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT
@@ -278,7 +279,8 @@ def main():
             before, remainder = existing.split(start, 1)
             _, after = remainder.split(end, 1)
             homepage.write_text(before + start + '\n' + editorial.home_carousel(posts) + '\n' + end + after, encoding='utf-8')
-    print(f'Built news archive, {len(posts)} articles, RSS, sitemap and journal carousel.')
+    google_tags.install(OUTPUT)
+    print(f'Built news archive, {len(posts)} articles, RSS, sitemap, journal carousel and Google Ads integration.')
 
 
 if __name__ == '__main__':

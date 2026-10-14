@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "authors": "Teneva et al.",
+    "year": 2024,
+    "title": "Effect of roasting on the chemical and lipid composition of pine nuts in two regions in Russia",
+    "journal": "Heliyon",
+    "doi": "10.1016/j.heliyon.2024.e34576",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39816337/",
+    "kind": "Rohstoffanalyse · keine Gesundheitsstudie",
+    "note": "Untersucht Zusammensetzung und Röstung von Pinienkernen. Keine Untersuchung von PINE NUT LATTE."
+  },
+  {
+    "id": 2,
+    "authors": "Estruch et al.",
+    "year": 2018,
+    "title": "Primary Prevention of Cardiovascular Disease with a Mediterranean Diet Supplemented with Extra-Virgin Olive Oil or Nuts",
+    "journal": "New England Journal of Medicine",
+    "doi": "10.1056/NEJMoa1800389",
+    "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa1800389",
+    "kind": "Menschen · mediterranes Ernährungsmuster",
+    "note": "Korrigierte Neuauswertung von PREDIMED. Die Mischung enthielt Walnüsse, Mandeln und Haselnüsse, keine Pinienkerne."
+  },
+  {
+    "id": 3,
+    "authors": "Pasman et al.",
+    "year": 2008,
+    "title": "The effect of Korean pine nut oil on in vitro CCK release, on appetite sensations and on gut hormones in post-menopausal overweight women",
+    "journal": "Lipids in Health and Disease",
+    "doi": "10.1186/1476-511X-7-10",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18355411/",
+    "kind": "Menschen · kleine, kurzfristige Ölstudie",
+    "note": "18 Teilnehmerinnen; untersucht wurden Ölpräparate und kurzfristige Messwerte, kein fertiges Getränk."
+  },
+  {
+    "id": 4,
+    "authors": "Creedon et al.",
+    "year": 2022,
+    "title": "The impact of almonds and almond processing on gastrointestinal physiology, luminal microbiology, and gastrointestinal symptoms: a randomized controlled trial and mastication study",
+    "journal": "The American Journal of Clinical Nutrition",
+    "doi": "10.1093/ajcn/nqac265",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/36130222/",
+    "kind": "Menschen · Mandeln, keine Pinienkerne",
+    "note": "Vier Wochen, 87 Erwachsene. Keine Verbesserung der Darmdurchlaufzeit oder Verdauungsbeschwerden festgestellt."
+  },
+  {
+    "id": 5,
+    "authors": "Wargent et al.",
+    "year": 2024,
+    "title": "Chronic administration of hydrolysed pine nut oil to mice improves insulin sensitivity and glucose tolerance and increases energy expenditure via a free fatty acid receptor 4-dependent mechanism",
+    "journal": "British Journal of Nutrition",
+    "doi": "10.1017/S0007114524000965",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38751244/",
+    "kind": "Tierexperiment · aufbereitetes Öl",
+    "note": "Versuch an Mäusen. Kein Nachweis einer Wirkung bei Menschen oder von PINE NUT LATTE."
+  }
+]

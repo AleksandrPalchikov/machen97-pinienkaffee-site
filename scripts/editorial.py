@@ -69,6 +69,7 @@ def load(include_drafts=False):
         if not published and not include_drafts: continue
         recipe=metadata.get('article_type')=='RecipeCollection'
         production=metadata.get('article_type')=='ProductionStory'
+        science=metadata.get('article_type')=='ScienceStory'
         body=body.split('# REDAKTIONS- UND DESIGNANHANG')[0]
         body=re.sub(r'<!--.*?-->','',body,flags=re.S).strip()
         heading,body=body.split('\n',1); heading=heading.removeprefix('# ')
@@ -83,11 +84,11 @@ def load(include_drafts=False):
             if not start.tzinfo or not end.tzinfo or end<start:raise ValueError('Editorial dates must be real timezone-aware dates')
             if start>datetime.now(start.tzinfo):continue
         result.append(dict(slug=path.strip('/').split('/')[-1],path=path,title=metadata['title'],heading=heading,
-            description=metadata['description'],category='article' if recipe or production else 'news',
-            image=('/images/magazin/pine-nut-latte-herstellung/'+metadata['hero']+'.webp') if production else (ASSETS+'hero-pine-nut-cappuccino.webp' if recipe else ASSETS+'label-classic.webp'),
-            image_alt='Geschälte Pinienkerne auf einem Sortierband' if production else ('Cappuccino – Stimmungsbild, keine Aufnahme des PINE-NUT-LATTE-Rezepts' if recipe else 'Neues Vorderetikett PINE NUT LATTE Classic 250 g'),
+            description=metadata['description'],category='article' if recipe or production or science else 'news',
+            image=ASSETS+'ingredient-pine-nuts.webp' if science else (('/images/magazin/pine-nut-latte-herstellung/'+metadata['hero']+'.webp') if production else (ASSETS+'hero-pine-nut-cappuccino.webp' if recipe else ASSETS+'label-classic.webp')),
+            image_alt='Pinienkerne in einer Holzschale – Zutaten-Stimmungsbild' if science else ('Geschälte Pinienkerne auf einem Sortierband' if production else ('Cappuccino – Stimmungsbild, keine Aufnahme des PINE-NUT-LATTE-Rezepts' if recipe else 'Neues Vorderetikett PINE NUT LATTE Classic 250 g')),
             published=metadata.get('published',''),modified=metadata.get('modified',''),author=metadata.get('author',''),
-            status='published' if published else 'draft',editorial=True,recipe=recipe,production=production,body=body,source=source.name))
+            status='published' if published else 'draft',editorial=True,recipe=recipe,production=production,science=science,body=body,source=source.name))
     return result
 
 
@@ -139,6 +140,9 @@ def cta():
 
 
 def render(post):
+    if post.get('science'):
+        import science_story
+        return science_story.render(post)
     if post.get('production'):
         import production
         return production.render(post)
@@ -208,7 +212,7 @@ def archive(posts,preview=False):
     cards=[]
     for post in posts:
         path=post.get('path','/aktuelles/'+post['slug']+'/')
-        label='Herkunft & Handwerk' if post.get('production') else ('Rezepte & Inspiration' if post.get('recipe') else ('Neuigkeiten' if post['category']=='news' else 'Wissen & Zubereitung'))
+        label='Wissen & Forschung' if post.get('science') else ('Herkunft & Handwerk' if post.get('production') else ('Rezepte & Inspiration' if post.get('recipe') else ('Neuigkeiten' if post['category']=='news' else 'Wissen & Zubereitung')))
         date='<span>Entwurf · Vorschau</span>' if not post.get('published') else '<time datetime="'+esc(post['published'])+'">'+datetime.fromisoformat(post['published']).strftime('%d.%m.%Y')+'</time>'
         cards.append('<article class="journal-card"><a class="card-image" href="'+path+'" tabindex="-1" aria-hidden="true"><img src="'+esc(post['image'])+'" alt="" width="900" height="700" loading="lazy"></a><div class="card-copy"><div class="card-meta"><span>'+label+'</span>'+date+'</div><h2><a href="'+path+'">'+esc(post['title'])+'</a></h2><p>'+esc(post['description'])+'</p><a class="read-link" href="'+path+'" aria-label="'+esc('Beitrag lesen: '+post['title'])+'">Geschichte lesen <span aria-hidden="true">→</span></a></div></article>')
     body='<section class="journal-intro"><span class="eyebrow">Das Journal von M97 Factory</span><h1>Geschichten für<br>eine andere <em>Kaffeepause.</em></h1><p>Neue Ideen, vertrauter Geschmack.<br>Neuigkeiten und Inspiration rund um Pinienkerne.</p></section><section class="journal-grid" aria-label="Alle Neuigkeiten und Artikel">'+''.join(cards)+'</section>'
@@ -223,11 +227,12 @@ def home_carousel(posts):
         'pine-nut-latte-cappuccino-rezepte': '7 Ideen mit PINE NUT LATTE',
         'pinienkaffee-zubereiten': 'Pinienkaffee richtig zubereiten',
         'aktuelles-start': 'Neuigkeiten von M97 Factory',
+        'pinienkerne-naehrstoffe-forschung': 'Was steckt in einem Pinienkern?',
     }
     cards=[]
     for post in posts[:8]:
         path=post.get('path','/aktuelles/'+post['slug']+'/')
-        category='Rezepte & Inspiration' if post.get('recipe') else ('Neuigkeiten' if post['category']=='news' else 'Wissen & Zubereitung')
+        category='Wissen & Forschung' if post.get('science') else ('Rezepte & Inspiration' if post.get('recipe') else ('Neuigkeiten' if post['category']=='news' else 'Wissen & Zubereitung'))
         cards.append('<li><a class="journal-teaser-card" href="'+esc(path)+'" aria-label="'+esc('Artikel lesen: '+post['title'])+'"><img src="'+esc(post['image'])+'" alt="" width="280" height="308" loading="lazy"><div class="journal-teaser-copy"><span class="journal-category">'+esc(category)+'</span><h3>'+esc(short_titles.get(post['slug'],post['title']))+'</h3><span class="journal-card-arrow" aria-hidden="true">→</span></div></a></li>')
     return '''<section id="journal-teaser" aria-labelledby="journal-teaser-title">
   <div class="container">

@@ -1,0 +1,26 @@
+[
+  {
+    "file": "/images/magazin/pine-nut-latte-gastronomie/barista-beim-espresso.webp",
+    "source": "https://www.pexels.com/photo/barrista-preparing-coffee-10439807/",
+    "download": "https://images.pexels.com/photos/10439807/pexels-photo-10439807.jpeg?auto=compress&cs=tinysrgb&w=2000",
+    "author": "Pew Nguyen",
+    "license": "https://www.pexels.com/license/",
+    "license_checked": "2026-10-15",
+    "kind": "stock",
+    "alt": "Barista bereitet Espresso an einer professionellen Kaffeemaschine zu. Stimmungsbild.",
+    "local_variants": [
+      "/images/magazin/pine-nut-latte-gastronomie/barista-beim-espresso-640.webp",
+      "/images/magazin/pine-nut-latte-gastronomie/barista-beim-espresso-1280.webp",
+      "/images/magazin/pine-nut-latte-gastronomie/barista-beim-espresso.webp"
+    ]
+  },
+  {
+    "file": "/images/magazin/pine-nut-latte/recipe-01-cappuccino.webp",
+    "source": "https://www.pexels.com/photo/elegant-latte-art-on-ceramic-cup-34030761/",
+    "author": "Busenur Demirkan",
+    "license": "https://www.pexels.com/license/",
+    "license_checked": "2026-10-15",
+    "kind": "stock",
+    "alt": "Cappuccino als mögliches Ausgangsgetränk für einen eigenen Geschmackstest. Stimmungsbild."
+  }
+]

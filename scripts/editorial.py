@@ -70,6 +70,7 @@ def load(include_drafts=False):
         recipe=metadata.get('article_type')=='RecipeCollection'
         production=metadata.get('article_type')=='ProductionStory'
         science=metadata.get('article_type')=='ScienceStory'
+        cafe=metadata.get('article_type')=='CafeStory'
         body=body.split('# REDAKTIONS- UND DESIGNANHANG')[0]
         body=re.sub(r'<!--.*?-->','',body,flags=re.S).strip()
         heading,body=body.split('\n',1); heading=heading.removeprefix('# ')
@@ -85,10 +86,10 @@ def load(include_drafts=False):
             if start>datetime.now(start.tzinfo):continue
         result.append(dict(slug=path.strip('/').split('/')[-1],path=path,title=metadata['title'],heading=heading,
             description=metadata['description'],category='article' if recipe or production or science else 'news',
-            image=ASSETS+'ingredient-pine-nuts.webp' if science else (('/images/magazin/pine-nut-latte-herstellung/'+metadata['hero']+'.webp') if production else (ASSETS+'hero-pine-nut-cappuccino.webp' if recipe else ASSETS+'label-classic.webp')),
-            image_alt='Pinienkerne in einer Holzschale – Zutaten-Stimmungsbild' if science else ('Geschälte Pinienkerne auf einem Sortierband' if production else ('Cappuccino – Stimmungsbild, keine Aufnahme des PINE-NUT-LATTE-Rezepts' if recipe else 'Neues Vorderetikett PINE NUT LATTE Classic 250 g')),
+            image='/images/magazin/pine-nut-latte-gastronomie/barista-beim-espresso.webp' if cafe else (ASSETS+'ingredient-pine-nuts.webp' if science else (('/images/magazin/pine-nut-latte-herstellung/'+metadata['hero']+'.webp') if production else (ASSETS+'hero-pine-nut-cappuccino.webp' if recipe else ASSETS+'label-classic.webp'))),
+            image_alt='Barista bereitet Espresso an der Maschine zu · Pexels, Pew Nguyen; Stimmungsbild' if cafe else ('Pinienkerne in einer Holzschale – Zutaten-Stimmungsbild' if science else ('Geschälte Pinienkerne auf einem Sortierband' if production else ('Cappuccino – Stimmungsbild, keine Aufnahme des PINE-NUT-LATTE-Rezepts' if recipe else 'Neues Vorderetikett PINE NUT LATTE Classic 250 g'))),
             published=metadata.get('published',''),modified=metadata.get('modified',''),author=metadata.get('author',''),
-            status='published' if published else 'draft',editorial=True,recipe=recipe,production=production,science=science,body=body,source=source.name))
+            status='published' if published else 'draft',editorial=True,recipe=recipe,production=production,science=science,cafe=cafe,body=body,source=source.name))
     return result
 
 
@@ -143,6 +144,9 @@ def render(post):
     if post.get('science'):
         import science_story
         return science_story.render(post)
+    if post.get('cafe'):
+        import cafe_story
+        return cafe_story.render(post)
     if post.get('production'):
         import production
         return production.render(post)

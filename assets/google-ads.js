@@ -2,8 +2,9 @@
 (() => {
   'use strict';
   const TAG = 'AW-18508694079';
+  const ANALYTICS = 'G-531CMKHRTX';
   const CONVERSION = TAG + '/yj5xCMPTtJodEL-E0flE';
-  const CHOICE = 'm97-ad-consent-v1';
+  const CHOICE = 'm97-ad-consent-v2';
   const SUBMISSION = 'm97-contact-conversion-v1';
   const CONSENT_AGE = 180 * 24 * 60 * 60 * 1000;
   const SUBMISSION_AGE = 30 * 60 * 1000;
@@ -33,11 +34,14 @@
     loaded = true;
     window.gtag('consent', 'update', {
       ad_storage: 'granted', ad_user_data: 'granted',
-      ad_personalization: 'denied', analytics_storage: 'denied'
+      ad_personalization: 'denied', analytics_storage: 'granted'
     });
     window.gtag('js', new Date());
     window.gtag('config', TAG, {
       allow_ad_personalization_signals: false, allow_google_signals: false
+    });
+    window.gtag('config', ANALYTICS, {
+      allow_google_signals: false, allow_ad_personalization_signals: false
     });
     const script = document.createElement('script');
     script.async = true;
@@ -59,6 +63,7 @@
       window.gtag('event', 'conversion', {
         send_to: CONVERSION, transaction_id: submission.id
       });
+      window.gtag('event', 'generate_lead', {send_to: ANALYTICS});
     } catch (_) { /* An unavailable storage must never interrupt a successful submission. */ }
   }
 
@@ -73,13 +78,13 @@
     } catch (_) { /* Sending the message and redirecting remain functional. */ }
   }
 
-  function clearAdCookies() {
+  function clearGoogleCookies() {
     const hostname = location.hostname;
     const domains = ['', hostname, '.' + hostname];
     if (hostname.startsWith('www.')) domains.push(hostname.slice(4), '.' + hostname.slice(4));
     document.cookie.split(';').forEach(cookie => {
       const name = cookie.trim().split('=')[0];
-      if (!name.startsWith('_gcl_')) return;
+      if (!name.startsWith('_gcl_') && name !== '_ga' && !name.startsWith('_ga_')) return;
       domains.forEach(domain => {
         document.cookie = name + '=; Max-Age=0; path=/' + (domain ? '; domain=' + domain : '') + '; SameSite=Lax';
       });
@@ -93,7 +98,7 @@
     if (previousFocus && document.contains(previousFocus)) previousFocus.focus();
     if (value === 'granted') loadTag();
     else {
-      clearAdCookies();
+      clearGoogleCookies();
       try { sessionStorage.removeItem(SUBMISSION); } catch (_) {}
       if (loaded) {
         window.gtag('consent', 'update', {
@@ -119,7 +124,7 @@
     banner.setAttribute('role', 'region');
     banner.setAttribute('aria-labelledby', 'm97-consent-title');
     banner.innerHTML = '<div class="m97-consent-copy"><h2 id="m97-consent-title">Deine Datenschutzwahl</h2>' +
-      '<p>Mit deiner Zustimmung nutzen wir Google Ads und Werbe-Cookies, um den Erfolg unserer Anzeigen zu messen. ' +
+      '<p>Mit deiner Zustimmung nutzen wir Google Analytics zur Reichweitenmessung und Google Ads zur Anzeigenmessung. ' +
       'Dabei können Nutzungsdaten an Google übermittelt werden. Du kannst deine Wahl jederzeit ändern.</p>' +
       '<a href="/datenschutz.html#google-ads">Mehr zum Datenschutz</a></div>' +
       '<div class="m97-consent-actions"><button type="button" data-m97-choice="denied">Ablehnen</button>' +
@@ -146,7 +151,7 @@
     if (next === consent) return;
     consent = next;
     if (loaded && next !== 'granted') {
-      clearAdCookies();
+      clearGoogleCookies();
       location.reload();
     } else {
       if (banner) banner.hidden = next !== null;

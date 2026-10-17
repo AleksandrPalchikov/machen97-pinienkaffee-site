@@ -86,6 +86,11 @@
         page_path: location.pathname
       });
       window.dataLayer.push({
+        event: 'conversion_event_submit_lead_form',
+        form_name: 'contact',
+        page_path: location.pathname
+      });
+      window.dataLayer.push({
         event: 'm97_ads_conversion',
         conversion_label: 'begin_checkout',
         page_path: location.pathname
@@ -94,6 +99,7 @@
         send_to: CONVERSION, transaction_id: submission.id
       });
       window.gtag('event', 'generate_lead', {send_to: ANALYTICS});
+      window.gtag('event', 'conversion_event_submit_lead_form');
     } catch (_) { /* An unavailable storage must never interrupt a successful submission. */ }
   }
 

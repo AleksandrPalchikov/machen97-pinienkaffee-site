@@ -217,6 +217,45 @@ def article(post):
 def xml_outputs(posts):
     namespace = 'http://www.sitemaps.org/schemas/sitemap/0.9'
     ET.register_namespace('', namespace)
+    image_namespace = 'http://www.google.com/schemas/sitemap-image/1.1'
+    ET.register_namespace('image', image_namespace)
+
+    # Keep one canonical sitemap for search engines and AI crawlers. Only pages
+    # that are intended to be indexed belong here; danke.html is explicitly
+    # noindex because it is a form confirmation page.
+    public_pages = []
+    for page in sorted(OUTPUT.rglob('*.html')):
+        relative = page.relative_to(OUTPUT)
+        if any(part in {'.git', 'node_modules', '.venv', 'venv'} for part in relative.parts):
+            continue
+        html = page.read_text(encoding='utf-8')
+        if re.search(r'<meta[^>]+name=["\']robots["\'][^>]+content=["\'][^"\']*noindex', html, re.I):
+            continue
+        if relative.name == 'index.html':
+            path = '/' if relative.parent == Path('.') else '/' + relative.parent.as_posix().strip('/') + '/'
+        else:
+            path = '/' + relative.as_posix()
+        canonical = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)', html, re.I)
+        address = canonical.group(1) if canonical else BASE + path
+        if address.startswith(BASE) and address not in {item[0] for item in public_pages}:
+            public_pages.append((address, None, None))
+
+    article_by_url = {url(post): post for post in posts}
+    for index, (address, _, _) in enumerate(public_pages):
+        post = article_by_url.get(address)
+        public_pages[index] = (address, post.get('modified') if post else datetime.now(timezone.utc).date().isoformat(), post)
+
+    full_sitemap = ET.Element('{' + namespace + '}urlset')
+    for address, modified, post in sorted(public_pages):
+        entry = ET.SubElement(full_sitemap, '{' + namespace + '}url')
+        ET.SubElement(entry, '{' + namespace + '}loc').text = address
+        ET.SubElement(entry, '{' + namespace + '}lastmod').text = modified
+        if post and post.get('image'):
+            image = ET.SubElement(entry, '{' + image_namespace + '}image')
+            ET.SubElement(image, '{' + image_namespace + '}loc').text = BASE + post['image']
+    ET.indent(full_sitemap, space='  ')
+    ET.ElementTree(full_sitemap).write(OUTPUT / 'sitemap.xml', encoding='utf-8', xml_declaration=True)
+
     sitemap = ET.Element('{' + namespace + '}urlset')
     entries = [(BASE + '/aktuelles/', max((post['modified'] for post in posts), default='2026-10-12'))]
     entries += [(url(post), post['modified']) for post in posts]

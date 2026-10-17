@@ -1,63 +1,76 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Hauptseite -->
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://machen97.com/</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-17</lastmod>
   </url>
-
-  <!-- Seitenabschnitte -->
   <url>
-    <loc>https://machen97.com/#produkt</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://machen97.com/agb.html</loc>
+    <lastmod>2026-10-17</lastmod>
   </url>
-
   <url>
-    <loc>https://machen97.com/#gesundheit</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://machen97.com/aktuelles/</loc>
+    <lastmod>2026-10-17</lastmod>
   </url>
-
   <url>
-    <loc>https://machen97.com/#b2b</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://machen97.com/aktuelles/aktuelles-start/</loc>
+    <lastmod>2026-10-12T18:03:42+03:00</lastmod>
+    <image:image>
+      <image:loc>https://machen97.com/images/photo_07.jpg</image:loc>
+    </image:image>
   </url>
-
   <url>
-    <loc>https://machen97.com/#ueber-uns</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://machen97.com/aktuelles/pinienkaffee-wird-pine-nut-latte/</loc>
+    <lastmod>2026-10-13T03:21:22+03:00</lastmod>
+    <image:image>
+      <image:loc>https://machen97.com/images/magazin/pine-nut-latte/label-classic.webp</image:loc>
+    </image:image>
   </url>
-
   <url>
-    <loc>https://machen97.com/#kontakt</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://machen97.com/aktuelles/pinienkaffee-zubereiten/</loc>
+    <lastmod>2026-10-12T18:03:42+03:00</lastmod>
+    <image:image>
+      <image:loc>https://machen97.com/images/photo_08.jpg</image:loc>
+    </image:image>
   </url>
-
-  <!-- Rechtliche Seiten -->
-  <url>
-    <loc>https://machen97.com/impressum.html</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
   <url>
     <loc>https://machen97.com/datenschutz.html</loc>
-    <lastmod>2026-03-14</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-10-17</lastmod>
   </url>
-
+  <url>
+    <loc>https://machen97.com/impressum.html</loc>
+    <lastmod>2026-10-17</lastmod>
+  </url>
+  <url>
+    <loc>https://machen97.com/magazin/pine-nut-latte-cappuccino-rezepte/</loc>
+    <lastmod>2026-10-13T03:21:22+03:00</lastmod>
+    <image:image>
+      <image:loc>https://machen97.com/images/magazin/pine-nut-latte/hero-pine-nut-cappuccino.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://machen97.com/magazin/pine-nut-latte-fuer-cafes/</loc>
+    <lastmod>2026-10-15T06:45:00+03:00</lastmod>
+    <image:image>
+      <image:loc>https://machen97.com/images/magazin/pine-nut-latte-gastronomie/barista-beim-espresso.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://machen97.com/magazin/pine-nut-latte-herstellung/</loc>
+    <lastmod>2026-10-13T09:44:54+03:00</lastmod>
+    <image:image>
+      <image:loc>https://machen97.com/images/magazin/pine-nut-latte-herstellung/m97-pine-nut-latte-pinienkerne-sortierung.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://machen97.com/magazin/pinienkerne-naehrstoffe-forschung/</loc>
+    <lastmod>2026-10-14T10:38:00+03:00</lastmod>
+    <image:image>
+      <image:loc>https://machen97.com/images/magazin/pine-nut-latte/ingredient-pine-nuts.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://machen97.com/widerrufsrecht.html</loc>
+    <lastmod>2026-10-17</lastmod>
+  </url>
 </urlset>

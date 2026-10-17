@@ -1,4 +1,4 @@
-"""Install the shared, consent-gated Google Ads integration on every public page."""
+"""Install the shared, consent-gated Google measurement integration sitewide."""
 TAG_BLOCK = '''<!-- M97 Google Ads: consent-gated shared tag -->
 <link rel="stylesheet" href="/assets/google-ads.css">
 <script src="/assets/google-ads.js" defer></script>
@@ -6,9 +6,9 @@ TAG_BLOCK = '''<!-- M97 Google Ads: consent-gated shared tag -->
 
 
 def install(root):
-    pages = list(root.glob('*.html'))
-    for directory in ['aktuelles', 'magazin']:
-        pages.extend((root/directory).rglob('*.html'))
+    ignored = {'.git', 'node_modules', '.venv', 'venv'}
+    pages = [page for page in root.rglob('*.html')
+             if not ignored.intersection(page.relative_to(root).parts)]
     for page in pages:
         html = page.read_text(encoding='utf-8')
         if '<!-- M97 Google Ads:' in html:

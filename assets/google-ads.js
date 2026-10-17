@@ -3,6 +3,7 @@
   'use strict';
   const TAG = 'AW-18508694079';
   const ANALYTICS = 'G-531CMKHRTX';
+  const GTM = 'GTM-3NTP6CFV';
   const CONVERSION = TAG + '/yj5xCMPTtJodEL-E0flE';
   const CHOICE = 'm97-ad-consent-v2';
   const SUBMISSION = 'm97-contact-conversion-v1';
@@ -10,6 +11,7 @@
   const SUBMISSION_AGE = 30 * 60 * 1000;
   let consent = readChoice();
   let loaded = false;
+  let gtmLoaded = false;
   let banner;
   let previousFocus;
 
@@ -43,11 +45,29 @@
     window.gtag('config', ANALYTICS, {
       allow_google_signals: false, allow_ad_personalization_signals: false
     });
+    loadGtm();
     const script = document.createElement('script');
     script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + TAG;
     document.head.appendChild(script);
     sendConversion();
+  }
+
+  function loadGtm() {
+    if (gtmLoaded || consent !== 'granted') return;
+    gtmLoaded = true;
+    // GTM shares this dataLayer with the consent-gated Google tag. The page event
+    // excludes query parameters and fires only after analytics consent.
+    window.dataLayer.push({'gtm.start': Date.now(), event: 'gtm.js'});
+    window.dataLayer.push({
+      event: 'm97_page_view',
+      page_path: location.pathname,
+      page_title: document.title
+    });
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM;
+    document.head.appendChild(script);
   }
 
   function sendConversion() {
@@ -60,6 +80,16 @@
           submission.at > Date.now() || Date.now() - submission.at > SUBMISSION_AGE) return;
       submission.sent = true;
       sessionStorage.setItem(SUBMISSION, JSON.stringify(submission));
+      window.dataLayer.push({
+        event: 'm97_generate_lead',
+        form_name: 'contact',
+        page_path: location.pathname
+      });
+      window.dataLayer.push({
+        event: 'm97_ads_conversion',
+        conversion_label: 'begin_checkout',
+        page_path: location.pathname
+      });
       window.gtag('event', 'conversion', {
         send_to: CONVERSION, transaction_id: submission.id
       });

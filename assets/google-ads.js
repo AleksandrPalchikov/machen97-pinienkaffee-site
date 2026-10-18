@@ -7,6 +7,7 @@
   const CONVERSION = TAG + '/yj5xCMPTtJodEL-E0flE';
   const CHOICE = 'm97-ad-consent-v2';
   const SUBMISSION = 'm97-contact-conversion-v1';
+  const ATTRIBUTION = 'm97-campaign-attribution-v1';
   const CONSENT_AGE = 180 * 24 * 60 * 60 * 1000;
   const SUBMISSION_AGE = 30 * 60 * 1000;
   let consent = readChoice();
@@ -14,13 +15,82 @@
   let gtmLoaded = false;
   let banner;
   let previousFocus;
+  let formStarted = false;
+  let interactionTrackingBound = false;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
   window.gtag('consent', 'default', {
     ad_storage: 'denied', ad_user_data: 'denied',
-    ad_personalization: 'denied', analytics_storage: 'denied'
+    ad_personalization: 'denied', analytics_storage: 'denied',
+    wait_for_update: 500
   });
+  window.gtag('set', 'ads_data_redaction', true);
+  window.gtag('set', 'url_passthrough', true);
+
+  function clean(value) {
+    return String(value || '').replace(/[^\p{L}\p{N} _%+.,:@/-]/gu, '').trim().slice(0, 120);
+  }
+
+  function captureAttribution() {
+    try {
+      const query = new URLSearchParams(location.search);
+      const values = {};
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(key => {
+        const value = clean(query.get(key));
+        if (value) values[key] = value;
+      });
+      if (!Object.keys(values).length) return;
+      const existing = JSON.parse(sessionStorage.getItem(ATTRIBUTION));
+      if (existing && existing.landing_page) return;
+      sessionStorage.setItem(ATTRIBUTION, JSON.stringify({
+        ...values,
+        landing_page: location.pathname.slice(0, 200)
+      }));
+    } catch (_) { /* Attribution is optional and must never block the page. */ }
+  }
+
+  function attribution() {
+    try {
+      const value = JSON.parse(sessionStorage.getItem(ATTRIBUTION));
+      if (!value || typeof value !== 'object') return {};
+      return Object.fromEntries(Object.entries(value).filter(([, item]) => typeof item === 'string' && item));
+    } catch (_) { return {}; }
+  }
+
+  function trackEvent(name, params = {}) {
+    if (consent !== 'granted') return;
+    const eventParams = {...attribution(), ...params};
+    window.dataLayer.push({event: name, ...eventParams});
+    window.gtag('event', name, eventParams);
+  }
+
+  function trackFormStart() {
+    if (formStarted || consent !== 'granted') return;
+    formStarted = true;
+    trackEvent('form_start', {form_name: 'contact'});
+  }
+
+  function trackFormSubmit() {
+    trackEvent('form_submit', {form_name: 'contact'});
+  }
+
+  function trackFormError() {
+    trackEvent('form_error', {form_name: 'contact', error_type: 'submission_failed'});
+  }
+
+  function trackCtaClick(event) {
+    const link = event.currentTarget;
+    const href = link.getAttribute('href') || '';
+    const target = href.startsWith('/') ? href.split('?')[0].slice(0, 160) : href.startsWith('#') ? href : '';
+    trackEvent('cta_click', {
+      cta_text: clean(link.textContent).slice(0, 80),
+      cta_target: target,
+      cta_type: href.startsWith('mailto:') ? 'email' : href.includes('kontakt') || href === '#kontakt' ? 'contact' : 'link'
+    });
+  }
+
+  captureAttribution();
 
   function readChoice() {
     try {
@@ -62,7 +132,8 @@
     window.dataLayer.push({
       event: 'm97_page_view',
       page_path: location.pathname,
-      page_title: document.title
+      page_title: document.title,
+      ...attribution()
     });
     const script = document.createElement('script');
     script.async = true;
@@ -83,28 +154,32 @@
       window.dataLayer.push({
         event: 'm97_generate_lead',
         form_name: 'contact',
-        page_path: location.pathname
+        page_path: location.pathname,
+        ...attribution()
       });
       window.dataLayer.push({
         event: 'conversion_event_submit_lead_form',
         form_name: 'contact',
-        page_path: location.pathname
+        page_path: location.pathname,
+        ...attribution()
       });
       window.dataLayer.push({
         event: 'm97_ads_conversion',
         conversion_label: 'begin_checkout',
-        page_path: location.pathname
+        page_path: location.pathname,
+        ...attribution()
       });
       window.gtag('event', 'conversion', {
         send_to: CONVERSION, transaction_id: submission.id
       });
-      window.gtag('event', 'generate_lead', {send_to: ANALYTICS});
-      window.gtag('event', 'conversion_event_submit_lead_form');
+      window.gtag('event', 'generate_lead', {send_to: ANALYTICS, ...attribution()});
+      window.gtag('event', 'conversion_event_submit_lead_form', attribution());
     } catch (_) { /* An unavailable storage must never interrupt a successful submission. */ }
   }
 
   function recordSuccessfulSubmission() {
     if (consent !== 'granted') return;
+    trackFormSubmit();
     try {
       const id = window.crypto && typeof window.crypto.randomUUID === 'function'
         ? window.crypto.randomUUID()
@@ -112,6 +187,16 @@
       // A short-lived success marker, never form fields or personal information.
       sessionStorage.setItem(SUBMISSION, JSON.stringify({id, at: Date.now(), sent: false}));
     } catch (_) { /* Sending the message and redirecting remain functional. */ }
+  }
+
+  function bindInteractionTracking() {
+    if (interactionTrackingBound) return;
+    interactionTrackingBound = true;
+    const form = document.querySelector('#contactForm');
+    if (form) form.addEventListener('focusin', trackFormStart);
+    document.querySelectorAll('a.btn, a.nav-cta, a[href="#kontakt"], a[href^="mailto:"]').forEach(link => {
+      link.addEventListener('click', trackCtaClick);
+    });
   }
 
   function clearGoogleCookies() {
@@ -177,10 +262,11 @@
     const footer = document.querySelector('footer');
     if (footer) footer.appendChild(settings);
     else document.body.appendChild(settings);
+    bindInteractionTracking();
     if (consent === null) banner.hidden = false;
   }
 
-  window.M97Ads = Object.freeze({ recordSuccessfulSubmission, openPreferences: showPreferences });
+  window.M97Ads = Object.freeze({ recordSuccessfulSubmission, recordFormError: trackFormError, openPreferences: showPreferences });
   window.addEventListener('storage', event => {
     if (event.key !== CHOICE) return;
     const next = readChoice();

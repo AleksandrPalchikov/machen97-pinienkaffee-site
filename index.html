@@ -3045,6 +3045,7 @@
       }
     } catch (err) {
       console.error('Form error:', err);
+      if (window.M97Ads) window.M97Ads.recordFormError();
       btn.innerHTML = originalHTML;
       btn.disabled = false;
       showToastContact(false);

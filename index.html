@@ -807,6 +807,77 @@
     }
     .stripe-btn:hover { background: #333; }
     .stripe-btn svg { width: 16px; height: 16px; }
+    .stripe-btn-outline {
+      background: transparent;
+      color: var(--black);
+      border: 1.5px solid var(--black);
+      padding: 11.5px 26px;
+    }
+    .stripe-btn-outline:hover { background: var(--black); color: var(--white); }
+
+    /* Retail purchase (Amazon.de) + B2B request inside product cards */
+    .product-card-footer {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+    }
+    .product-buy {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .product-buy .stripe-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 15px 28px;
+    }
+    .product-buy-note {
+      font-size: 11px;
+      color: var(--gray-light);
+      letter-spacing: 0.06em;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .product-b2b {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 18px;
+      border-top: 1px dashed var(--light);
+    }
+
+    /* Produkt section: direct order row */
+    .produkt-buy {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--light);
+    }
+    .produkt-buy-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin-bottom: 14px;
+    }
+    .produkt-buy-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .produkt-buy-actions .btn svg {
+      width: 16px; height: 16px; flex-shrink: 0;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+    .produkt-buy-hint {
+      margin: 14px 0 0;
+      font-size: 13px;
+      color: var(--gray-light);
+      line-height: 1.6;
+    }
 
     /* =====================
        B2B
@@ -1795,6 +1866,10 @@
       .founders-row { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .kontakt-form { padding: 28px 20px; }
+      .produkt-buy-actions .btn { width: 100%; justify-content: center; padding: 14px 16px; font-size: 12px; white-space: nowrap; }
+      .product-buy .stripe-btn { padding: 15px 14px; font-size: 12px; white-space: nowrap; }
+      .product-b2b { flex-direction: column; align-items: stretch; }
+      .product-b2b .stripe-btn { justify-content: center; }
     }
 
     /* =====================
@@ -2179,6 +2254,21 @@
             <span><strong>Zertifiziert importiert</strong> – alle EU-Kennzeichnungsanforderungen erfüllt</span>
           </li>
         </ul>
+
+        <div class="produkt-buy">
+          <span class="produkt-buy-label">Jetzt online bestellen</span>
+          <div class="produkt-buy-actions">
+            <a href="https://www.amazon.de/dp/B0HN7R5ZDV" class="btn btn-dark" target="_blank" rel="noopener" title="M97 Factory Pine Nut Latte Classic 250 g bei Amazon.de">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              Classic bei Amazon kaufen
+            </a>
+            <a href="https://www.amazon.de/dp/B0HN7R4HL1" class="btn btn-outline" target="_blank" rel="noopener" title="M97 Factory Pine Nut Latte mit Gewürzen 250 g bei Amazon.de">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              Mit Gewürzen bei Amazon kaufen
+            </a>
+          </div>
+          <p class="produkt-buy-hint">Beide Sorten in der 250-g-Dose, Bestellung über Amazon.de. Für Handel und Gastronomie: <a href="#kontakt">B2B-Anfrage stellen</a>.</p>
+        </div>
       </div>
 
       <div class="produkt-visual">
@@ -2286,7 +2376,7 @@
         <span class="tag">Produktkatalog</span>
         <h2>Unsere Produkte</h2>
       </div>
-      <p style="max-width:380px; font-size:15px;">Großhandel &amp; B2B-Bestellungen auf Anfrage. Schreiben Sie uns – wir antworten schnell mit einem individuellen Angebot.</p>
+      <p style="max-width:380px; font-size:15px;">Privatkunden bestellen beide Sorten direkt bei Amazon.de. Großhandel &amp; B2B-Bestellungen auf Anfrage – wir antworten schnell mit einem individuellen Angebot.</p>
     </div>
 
     <div class="products-grid">
@@ -2308,16 +2398,25 @@
             <span class="attr-chip">Vegetarisch</span>
           </div>
           <div class="product-card-footer">
-            <div class="product-price">
-              <span class="price-val" style="font-size:18px; color:var(--gray);">Preis auf Anfrage</span>
-              <span class="price-note">Großhandel · B2B-Konditionen</span>
+            <div class="product-buy">
+              <a href="https://www.amazon.de/dp/B0HN7R5ZDV" class="stripe-btn" target="_blank" rel="noopener" title="M97 Factory Pine Nut Latte Classic 250 g bei Amazon.de">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Jetzt bei Amazon kaufen
+              </a>
+              <span class="product-buy-note">Amazon.de · M97 Factory Pine Nut Latte Classic 250 g · für Privatkunden</span>
             </div>
-            <a href="#kontakt" class="stripe-btn" onclick="setTimeout(()=>{var s=document.getElementById('interest');if(s)s.value='b2b';},100)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-              </svg>
-              Anfrage stellen
-            </a>
+            <div class="product-b2b">
+              <div class="product-price">
+                <span class="price-val" style="font-size:18px; color:var(--gray);">Preis auf Anfrage</span>
+                <span class="price-note">Großhandel · B2B-Konditionen</span>
+              </div>
+              <a href="#kontakt" class="stripe-btn stripe-btn-outline" onclick="setTimeout(()=>{var s=document.getElementById('interest');if(s)s.value='b2b';},100)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                </svg>
+                B2B-Anfrage stellen
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -2339,16 +2438,25 @@
             <span class="attr-chip">Kurkuma</span>
           </div>
           <div class="product-card-footer">
-            <div class="product-price">
-              <span class="price-val" style="font-size:18px; color:var(--gray);">Preis auf Anfrage</span>
-              <span class="price-note">Großhandel · B2B-Konditionen</span>
+            <div class="product-buy">
+              <a href="https://www.amazon.de/dp/B0HN7R4HL1" class="stripe-btn" target="_blank" rel="noopener" title="M97 Factory Pine Nut Latte mit Gewürzen 250 g bei Amazon.de">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Jetzt bei Amazon kaufen
+              </a>
+              <span class="product-buy-note">Amazon.de · M97 Factory Pine Nut Latte mit Gewürzen 250 g · für Privatkunden</span>
             </div>
-            <a href="#kontakt" class="stripe-btn" onclick="setTimeout(()=>{var s=document.getElementById('interest');if(s)s.value='b2b';},100)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-              </svg>
-              Anfrage stellen
-            </a>
+            <div class="product-b2b">
+              <div class="product-price">
+                <span class="price-val" style="font-size:18px; color:var(--gray);">Preis auf Anfrage</span>
+                <span class="price-note">Großhandel · B2B-Konditionen</span>
+              </div>
+              <a href="#kontakt" class="stripe-btn stripe-btn-outline" onclick="setTimeout(()=>{var s=document.getElementById('interest');if(s)s.value='b2b';},100)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                </svg>
+                B2B-Anfrage stellen
+              </a>
+            </div>
           </div>
         </div>
       </div>
